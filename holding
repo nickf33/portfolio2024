@@ -1,0 +1,16 @@
+          <div className="title__wrap contact">
+            <h1 className="heading">Contact</h1>
+            <div className="about__img__wrap">
+              {/* <Image
+                src={aboutData.mainImg.url}
+                alt={aboutData.mainImg.alt}
+                width={200}
+                height={200}
+                className="about__img"
+              /> */}
+            </div>
+          </div>
+          <div className="component__wrap">
+            <ContactForm />
+            <ContactDetails />
+          </div>

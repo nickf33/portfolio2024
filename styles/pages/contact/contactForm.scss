@@ -1,0 +1,36 @@
+.form__container {
+  height: 100%;
+  width: 90%;
+  @include mobile {
+    width: 100%;
+  }
+  .form__wrap {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0 0;
+    .form__field {
+      background: transparent;
+      border: none;
+      font-family: var(--thin-thick);
+      color: var(--light-color);
+      font-size: 0.8rem;
+      padding: 0.2rem 0 1rem 0;
+      border-top: 1px solid var(--light-color);
+      transition: 400ms ease;
+      &:focus {
+        background-color: transparent;
+        border: none;
+        font-size: 0.9rem;
+      }
+      &:active {
+        background-color: transparent;
+      }
+      &:valid {
+        background-color: transparent;
+      }
+    }
+  }
+}
+#message {
+  height: 100px;
+}

@@ -1,0 +1,30 @@
+.work__header-wrap {
+  position: relative;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.8rem 0 0.5rem;
+  border-bottom: 1px solid var(--light-color);
+  z-index: 2;
+  @include mobile {
+    position: sticky;
+    top: 60px;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    background-color: var(--dark-opacity);
+    backdrop-filter: blur(10px);
+  }
+}
+
+.container.work__items {
+  position: relative;
+  min-height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  @include mobile {
+    grid-gap: 1rem;
+  }
+  @include small {
+    grid-template-columns: 1fr;
+  }
+}

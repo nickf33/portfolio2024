@@ -1,0 +1,53 @@
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.1s ease-in, height 0.1s ease-in;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  mix-blend-mode: difference;
+  @include mobile {
+    display: none;
+  }
+  &.grow {
+    height: 3rem;
+    width: 3rem;
+    transition: width 0.2s ease-in, height 0.2s ease-in;
+    background-color: var(--cursor-color);
+  }
+  .dot {
+    height: 5px;
+    width: 5px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    mix-blend-mode: normal;
+    &.hide {
+      display: none;
+    }
+  }
+}
+
+.cursor__fade {
+  position: absolute;
+  width: 750px;
+  height: 750px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: -1;
+}

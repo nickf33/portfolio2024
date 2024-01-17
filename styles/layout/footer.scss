@@ -1,0 +1,35 @@
+.footer {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  bottom: 0;
+}
+
+p.footer__text {
+  @include gradientText;
+  font-size: 0.6rem;
+  font-family: var(--sub-font);
+}
+.icon__wrap {
+  width: 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .icon {
+    font-size: 0.6rem;
+    height: 1rem;
+    width: 1rem;
+    border-radius: 0.5rem;
+    display: grid;
+    place-content: center;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    transition: 200ms ease;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

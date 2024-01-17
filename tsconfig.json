@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "target": "es2015", // or "es2015" or higher
+    "downlevelIteration": true,
+    "noImplicitAny": false,
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -22,6 +25,13 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "components/Cursor.js",
+    "components/MagneticWrap.jsx"
+  ],
   "exclude": ["node_modules"]
 }

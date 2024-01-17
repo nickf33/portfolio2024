@@ -1,0 +1,20 @@
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+.contact__img {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+}
+
+.text__wrap.contact {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0 0;
+}
