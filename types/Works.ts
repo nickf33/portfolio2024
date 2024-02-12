@@ -1,5 +1,3 @@
-import { PortableTextBlock } from "sanity";
-
 export type WorkImage = {
   url: string;
   alt: string;

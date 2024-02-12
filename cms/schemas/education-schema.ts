@@ -1,13 +1,8 @@
-const resume = {
-  name: "resume",
-  title: "Resume",
+const education = {
+  name: "education",
+  title: "Education",
   type: "document",
   fields: [
-    {
-      name: "order",
-      title: "Display Order",
-      type: "number",
-    },
     {
       name: "title",
       title: "Title",
@@ -58,4 +53,4 @@ const resume = {
   ],
 };
 
-export default resume;
+export default education;

@@ -1,19 +1,10 @@
 import type { Metadata } from "next";
-import "@/styles/index.scss";
-import NavigationWrap from "@/components/layout/navs/NavigationWrap";
-import Footer from "@/components/layout/Footer";
-import Cursor from "@/components/layout/Cursor";
-import Background from "@/components/layout/Background";
-import Lenis from "@studio-freight/lenis";
-
-const lenis = new Lenis();
-
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-
-requestAnimationFrame(raf);
+// import "@/styles/index.scss";
+import "@/app/styles/index.scss";
+import NavigationWrap from "@/app/components/layout/navs/NavigationWrap";
+import Footer from "@/app/components/layout/Footer";
+import Cursor from "@/app/components/layout/Cursor";
+import Background from "./components/layout/background";
 
 export const metadata: Metadata = {
   title: "Nick Feltham Portfolio 2024",
@@ -28,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Background />
+        {/* <Background /> */}
         <NavigationWrap />
-        <main>{children}</main>
-        <Footer />
+        <main className="relative min-h-screen">
+          {children}
+          <Footer />
+        </main>
         <Cursor />
       </body>
     </html>

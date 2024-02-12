@@ -2,25 +2,12 @@ import { About } from "../types/About";
 import { Work } from "../types/Works";
 import { Article } from "../types/Article";
 import { Resume } from "../types/Resume";
-import { Framework } from "@/types/Framework";
+import { Education } from "../types/Education";
+import { Interests } from "../types/Interests";
+import { Skills } from "../types/Skills";
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 
-// getFramework item
-export async function getFramework(): Promise<Framework> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "framework] {
-      _id,
-      _createdAt,
-      framework,
-      "iconImg": {
-        "url" : iconImg.asset->url,
-        "alt" : iconImg.alt,
-      },
-      rating,
-    }`
-  );
-}
 // Get about section
 export async function getAbout(): Promise<About> {
   return createClient(clientConfig).fetch(
@@ -133,12 +120,13 @@ export async function getArticle(): Promise<Article> {
 `
   );
 }
-// Get Experience
+// Get Resume/ Work History
 export async function getResume(): Promise<Resume[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "resume"]{
       _id,
       _createdAt,
+      order,
       category,
       title,
       subTitle,
@@ -147,6 +135,54 @@ export async function getResume(): Promise<Resume[]> {
       listItems,
       startDate,
       endDate,
+    }
+`
+  );
+}
+
+// Get Education
+export async function getEducation(): Promise<Education> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "education"][0]{
+      _id,
+      _createdAt,
+      title,
+      subTitle,
+      brief,
+      listtitle,
+      listItems,
+      startDate,
+      endDate,
+    }
+`
+  );
+}
+
+// Get Skills list
+export async function getSkills(): Promise<Skills> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "skills"][0]{
+      _id,
+      _createdAt,
+      title,
+      "skillsList": skillsList[] {
+        skillName,
+        "skillIcon": skillIcon.asset->url,
+        "alt": skillIcon.alt
+        }
+      }
+    `
+  );
+}
+
+// Get Interests list
+export async function getInterests(): Promise<Interests> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "interests"][0]{
+      _id,
+      _createdAt,
+      title,
+      brief,
     }
 `
   );
