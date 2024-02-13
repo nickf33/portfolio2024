@@ -1,17 +1,22 @@
 import Image from "next/image";
 
+interface Skill {
+  skillIcon: string;
+  alt: string;
+}
+
 const Skills = ({ skillsData }) => {
   const { title, skillsList } = skillsData;
 
   return (
     <>
-      <div className="relative my-20 ml-auto max-w-[28rem]">
-        <hr />
+      <div className="relative my-20 w-4/5 ml-auto tablet:w-full">
         <h2 className="text-right text-xl mb-2 mt-8">{title}</h2>
-        <div className="flex justify-end flex-wrap w-full">
-          {skillsList.map((skill, idx) => (
+
+        <div className="flex justify-end flex-wrap w-full max-w-[26rem] laptop:max-w-[20rem] ml-auto">
+          {skillsList.map((skill: Skill, idx: number) => (
             <div
-              className="flex space-evenly m-4 mr-0 border rounded-lg w-12 h-12 overflow-hidden transition ease-in-out duration-300 hover:scale-105"
+              className="flex space-evenly m-4 mr-0 border rounded-lg w-10 h-10 overflow-hidden transition ease-in-out duration-300 hover:scale-105"
               key={idx}
             >
               <Image

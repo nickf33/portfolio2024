@@ -4,15 +4,6 @@ import React, { useState } from "react";
 import projectData from "@/cms/config/client-config";
 import Line from "../ui/Line";
 
-const Button = () => {
-  <div className="relative flex items-center w-full mx-auto">
-    <Line />
-    <button className="link absolute flex justify-center items-center h-16 w-16 bg-blue-dark border rounded-full">
-      SEND
-    </button>
-  </div>;
-};
-
 const createSanityContact = async (formData) => {
   try {
     const response = await fetch(

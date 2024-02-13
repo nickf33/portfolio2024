@@ -1,6 +1,6 @@
 import Template from "./Template";
 
-const Interests = ({ interestsData }) => {
+const Interests = ({ interestsData }: { interestsData: string }) => {
   return (
     <>
       {interestsData && (

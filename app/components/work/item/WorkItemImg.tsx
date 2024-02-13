@@ -26,7 +26,6 @@ export default function WorkItemImg({ img }) {
   });
 
   const parallax = useTransform(scrollYProgress, [0, 1], [-200, 100]);
-  const parallaxMob = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
     <div ref={container} className="overflow-hidden h-80 w-full tablet:h-72">
@@ -42,7 +41,7 @@ export default function WorkItemImg({ img }) {
           />
         </motion.div>
       ) : (
-        <motion.div style={{ y: parallaxMob }} className="relative">
+        <motion.div className="relative">
           <Image
             src={img.url}
             alt={img.alt}

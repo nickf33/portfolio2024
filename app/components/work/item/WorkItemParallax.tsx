@@ -33,10 +33,7 @@ export default function WorkParallax({ parallaxImgs }) {
   const imgMob = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    <div
-      ref={container}
-      className="flex mt-32 mr-10 w-full tablet:flex-col tablet:gap-20"
-    >
+    <div ref={container} className="flex mt-32 mr-10 w-full tablet:flex-col">
       {!isSmallerScreen && (
         <>
           <div className="w-full flex-grow basis-[110%]">
@@ -72,11 +69,8 @@ export default function WorkParallax({ parallaxImgs }) {
 
       {isSmallerScreen && (
         <>
-          <div className="w-full overflow-hidden">
-            <motion.div
-              style={{ y: imgMob }}
-              className="h-72 object-cover object-center"
-            >
+          <div className="w-4/5 overflow-hidden">
+            <div className="h-auto object-cover object-center">
               <Image
                 src={imgOne.url}
                 alt={imgOne.alt}
@@ -84,13 +78,10 @@ export default function WorkParallax({ parallaxImgs }) {
                 height={1000}
                 className="scroll__img"
               />
-            </motion.div>
+            </div>
           </div>
-          <div className="w-full overflow-hidden">
-            <motion.div
-              style={{ y: imgMob }}
-              className="h-72 object-cover object-center"
-            >
+          <div className="relative top-[-4rem] w-4/5 ml-auto overflow-hidden">
+            <div className="h-auto object-cover object-center">
               <Image
                 src={imgTwo.url}
                 alt={imgTwo.alt}
@@ -98,7 +89,7 @@ export default function WorkParallax({ parallaxImgs }) {
                 height={1000}
                 className="scroll__img"
               />
-            </motion.div>
+            </div>
           </div>
         </>
       )}

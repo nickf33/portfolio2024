@@ -5,9 +5,10 @@ const WorkHistory = ({ workHistoryData }) => {
 
   return (
     <>
-      {workHistoryData.map((data, idx) => (
-        <Template key={idx} data={data} category="work" index={idx} />
-      ))}
+      {workHistoryData &&
+        workHistoryData.map((data, idx) => (
+          <Template key={idx} data={data} category="work" index={idx} />
+        ))}
     </>
   );
 };
