@@ -51,6 +51,11 @@ module.exports = {
           light: "#ffffff",
         },
       },
+      backgroundImage: {
+        "gradient-green": "linear-gradient(to bottom right, #01EFEF, #09D89D)",
+        "gradient-blue": "linear-gradient(to bottom right, #74DEFF, #7209B7)",
+        "gradient-red": "linear-gradient(to bottom right, #F72585, #A124EE)",
+      },
     },
     maxWidth: {
       custom: "1024px",
