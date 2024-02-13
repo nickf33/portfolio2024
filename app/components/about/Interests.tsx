@@ -1,9 +1,6 @@
-import { getInterests } from "@/cms/sanity-utils";
 import Template from "./Template";
 
-export default async function Interests() {
-  const interestsData = await getInterests();
-
+const Interests = ({ interestsData }) => {
   return (
     <>
       {interestsData && (
@@ -11,4 +8,6 @@ export default async function Interests() {
       )}
     </>
   );
-}
+};
+
+export default Interests;

@@ -5,10 +5,10 @@ const Template = ({ data, category, index }) => {
         <h2
           className={`text-lg text-right gradient__text tablet:text-xl tablet:mb-4 ${
             category === "education"
-              ? "bg-gradient-to-br from-blue-light to-green-light text-transparent bg-clip-text inline-block"
+              ? "bg-gradient-green text-transparent bg-clip-text inline-block"
               : category === "work"
-              ? "bg-gradient-to-br from-red-light to-red-dark text-transparent bg-clip-text inline-block"
-              : "bg-gradient-to-br from-purple-light to-purple-dark text-transparent bg-clip-text inline-block"
+              ? "bg-gradient-green text-transparent bg-clip-text inline-block"
+              : "bg-gradient-green text-transparent bg-clip-text inline-block"
           }
             ${index >= 1 ? "hidden" : ""}
             `}

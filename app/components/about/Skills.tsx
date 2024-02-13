@@ -1,8 +1,7 @@
-import { getSkills } from "@/cms/sanity-utils";
 import Image from "next/image";
 
-export default async function Skills() {
-  const { title, skillsList } = await getSkills();
+const Skills = ({ skillsData }) => {
+  const { title, skillsList } = skillsData;
 
   return (
     <>
@@ -28,4 +27,6 @@ export default async function Skills() {
       </div>
     </>
   );
-}
+};
+
+export default Skills;

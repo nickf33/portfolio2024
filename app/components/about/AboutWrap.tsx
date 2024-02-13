@@ -7,7 +7,13 @@ import Skills from "./Skills";
 import Interests from "./Interests";
 import { motion } from "framer-motion";
 
-const AboutWrap = ({ aboutData }) => {
+const AboutWrap = ({
+  aboutData,
+  skillsData,
+  interestsData,
+  educationData,
+  workHistoryData,
+}) => {
   return (
     <motion.div
       key="content"
@@ -35,22 +41,25 @@ const AboutWrap = ({ aboutData }) => {
           <IoMdDownload className="text-xl lgMobile:text-2xl" />
         </Button>
         <div className="max-w-[36rem] pt-8 ml-auto">
-          <Education />
-          <WorkHistory />
-          <Interests />
+          <Education educationData={educationData} />
+          <WorkHistory workHistoryData={workHistoryData} />
+          <Interests interestsData={interestsData} />
         </div>
-        <Skills />
+        <Skills skillsData={skillsData} />
       </div>
 
       <div className="w-4/5 mx-auto max-w-custom mt-20">
-        <h1 className="text-2xl">{aboutData.title}</h1>
+        <h1 className="text-2xl">What I have worked on</h1>
 
         <Button link="work" label="work button">
-          View WORK
+          My Work
         </Button>
 
         <p className="text-2xs text-white-dark font-medium my-8 max-w-[22rem] tablet:text-xs">
-          {aboutData.statement}
+          Since graduating from the Open University, I have worked on some
+          personal projects to bridge gaps in my knowledge and upgrade my stack
+          to include React and Next.js. Check out some of the projects I have
+          been working on.
         </p>
       </div>
     </motion.div>

@@ -4,24 +4,24 @@ import Link from "next/link";
 import Button from "@/app/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
-const UniLink = () => {
+const ExternalLink = ({ text, link }) => {
   return (
     <Link
       target="_blank"
-      href="https://www.open.ac.uk/"
-      className="bg-gradient-to-br from-blue-light to-green-light text-transparent bg-clip-text inline-block"
+      href={link}
+      className="bg-gradient-red text-transparent bg-clip-text inline-block shadow-lg"
       rel="noopener noreferrer"
     >
-      Open University
+      {text}
     </Link>
   );
 };
 
-const InternalLink = ({ text, link }) => {
+const InternalLink = ({ text, link }: { text: string; link: string }) => {
   return (
     <Link
       href={`/${link}`}
-      className="bg-gradient-to-br from-red-light to-red-dark  text-transparent bg-clip-text inline-block"
+      className="bg-gradient-green text-transparent bg-clip-text inline-block shadow-xl"
     >
       {text}
     </Link>
@@ -43,11 +43,15 @@ export default function HomeWrap() {
           >
             <div className="flex flex-col my-8 max-w-[27rem] tablet:max-w-[100vw] lgMobile:max-w-[24rem]">
               <h1 className="text-xl tablet:text-2xl">
-                Hi, I am Nick. a recent <UniLink /> graduate with first class
-                honours in web technologies, design and development. {<br />}
+                Hi, I am Nick. a recent{" "}
+                <ExternalLink
+                  text="Open University"
+                  link="https://open.ac.uk"
+                />{" "}
+                graduate with first class honours in web technologies, design
+                and development. {<br />}
                 Take a look at some <InternalLink text="work" link="work" /> or
-                view my <InternalLink text="résumé" link="about" />
-                &nbsp;.
+                view my <InternalLink text="C.V" link="about" />.
               </h1>
             </div>
 
