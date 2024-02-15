@@ -6,7 +6,7 @@ const FilterButton = ({
 }) => {
   return (
     <button
-      className={`py-1 px-4 ml-4 text-xs rounded-2xl bg-blue-dark border border-white-dark  tracking-wide transition duration-300 hover:bg-white-dark hover:border-blue-dark hover:text-blue-dark active:bg-green-light link lgMobile:ml-0 lgMobile:mr-4 ${
+      className={`flex py-1 px-4 ml-4 text-2xs rounded-full bg-blue-dark border border-white-dark tracking-wide transition duration-300 hover:bg-white-dark hover:border-blue-dark hover:text-blue-dark active:bg-green-light link lgMobile:justify-between lgMobile:ml-0 ${
         selectedCategory === category
           ? "bg-white-dark text-blue-dark"
           : "text-white-dark"

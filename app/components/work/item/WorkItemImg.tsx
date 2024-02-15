@@ -9,6 +9,7 @@ export default function WorkItemImg({ img }) {
   const [isMobile, setIsMobile] = useState(false);
   const switchWidth = 767;
 
+  // Resize to handle switch between parallax images
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= switchWidth);
@@ -20,6 +21,7 @@ export default function WorkItemImg({ img }) {
     };
   }, [switchWidth]);
 
+  // Parallax Scroll
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
@@ -28,7 +30,7 @@ export default function WorkItemImg({ img }) {
   const parallax = useTransform(scrollYProgress, [0, 1], [-200, 100]);
 
   return (
-    <div ref={container} className="overflow-hidden h-80 w-full tablet:h-72">
+    <div ref={container} className="overflow-hidden h-80 w-full tablet:h-auto">
       {!isMobile ? (
         <motion.div style={{ y: parallax }} className="relative">
           <Image

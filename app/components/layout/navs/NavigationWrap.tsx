@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import DesktopNav from "./DesktopNav";
-import HamburgerNav from "./MobileNav";
+import MobileNav from "./MobileNav";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function NavigationWrap() {
   const [isMobile, setIsMobile] = useState(false);
@@ -19,5 +20,22 @@ export default function NavigationWrap() {
     };
   }, [switchWidth]);
 
-  return <>{isMobile ? <HamburgerNav /> : <DesktopNav />}</>;
+  // const [isHidden, setIsHidden] = useState(false);
+  // const { scrollY } = useScroll();
+
+  // // useEffect(() => {
+  // //   const unsub = scrollY.on("change", (latest) => console.log(latest));
+  // //   return () => unsub();
+  // // }, [scrollY]);
+
+  // useMotionValueEvent(scrollY, "change", (latest) => {
+  //   const previous = scrollY.getPrevious();
+  //   if (latest > previous && latest > 150) {
+  //     setIsHidden(true);
+  //   } else {
+  //     setIsHidden(false);
+  //   }
+  // });
+
+  return <>{isMobile ? <MobileNav /> : <DesktopNav />}</>;
 }

@@ -5,36 +5,37 @@ import { useRef, useState, useEffect } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
 export default function WorkParallax({ parallaxImgs }) {
+  // Parallax Scroll
   const imgOne = parallaxImgs[0];
   const imgTwo = parallaxImgs[1];
   const container = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
   });
 
-  const [isSmallerScreen, setIsSmallerScreen] = useState(false);
+  const frontImg = useTransform(scrollYProgress, [0, 1], [75, -75]);
+  const backImg = useTransform(scrollYProgress, [0, 1], [-100, 150]);
+
+  // Resize to handle switch between parallax images
+  const [isMobile, setIsMobile] = useState(false);
+  const switchWidth = 767;
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallerScreen(window.innerWidth < 767);
+      setIsMobile(window.innerWidth <= switchWidth);
     };
     handleResize();
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
-
-  const frontImg = useTransform(scrollYProgress, [0, 1], [75, -75]);
-  const backImg = useTransform(scrollYProgress, [0, 1], [0, 150]);
-
-  const imgMob = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  }, [switchWidth]);
 
   return (
     <div ref={container} className="flex mt-32 mr-10 w-full tablet:flex-col">
-      {!isSmallerScreen && (
+      {!isMobile ? (
         <>
           <div className="w-full flex-grow basis-[110%]">
             <motion.div
@@ -65,9 +66,7 @@ export default function WorkParallax({ parallaxImgs }) {
             </motion.div>
           </div>
         </>
-      )}
-
-      {isSmallerScreen && (
+      ) : (
         <>
           <div className="w-4/5 overflow-hidden">
             <div className="h-auto object-cover object-center">

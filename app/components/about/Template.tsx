@@ -3,7 +3,7 @@ const Template = ({ data, category, index }) => {
     <div className="relative flex mt-8 tablet:flex-col tablet:mt-4">
       <div className="flex justify-end w-32 tablet:w-full tablet:justify-start">
         <h2
-          className={`text-lg text-right gradient__text tablet:text-xl tablet:mb-4 bg-gradient-green text-transparent bg-clip-text inline-block
+          className={`text-lg text-right tablet:text-xl tablet:mb-4 bg-gradient-green text-transparent bg-clip-text inline-block
             ${index >= 1 ? "hidden" : ""}
             `}
         >

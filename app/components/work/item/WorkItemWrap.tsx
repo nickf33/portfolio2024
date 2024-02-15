@@ -58,7 +58,7 @@ const WorkItemWrap = ({ data, workList }) => {
             <WorkItemNav workArray={workList} slug={data.slug} />
 
             <div className="relative mt-40">
-              <h1 className="text-xl">Like what you see big boy?</h1>
+              <h1 className="text-xl">Let's Talk</h1>
               <div className="absolute top-4 right-0 flex items-center text-2xs group transition duration-300 laptop:hidden">
                 <div className="relative transition duration-300 group-hover:translate-x-[-0.5rem]">
                   <IoIosArrowRoundBack />

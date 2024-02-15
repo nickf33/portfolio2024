@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useMotionValueEvent,
+} from "framer-motion";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import logo from "@/images/logo/logo.png";
-import { FaPhoneAlt } from "react-icons/fa";
-import { MdAlternateEmail } from "react-icons/md";
-
+import MagneticWrap from "../../ui/MagneticWrap";
+import ContactDetails from "../../contact/ContactDetails";
 import Footer from "../Footer";
 
 /* Nav Links Array */
@@ -21,6 +25,20 @@ const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
+  // Hide nav on scroll
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
+
+  // toggle nav
   const toggleMenu = () => {
     setIsOpen((prevOpen) => !prevOpen);
   };
@@ -28,7 +46,15 @@ const MobileNav = () => {
   return (
     <>
       {/* Nav Bar */}
-      <nav className="bg-blue-dark min-h-[90px] flex justify-between items-center px-[10vw] fixed top-0 w-full z-[101]">
+      <motion.nav
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: -100 },
+        }}
+        animate={isHidden && !isOpen ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        className="bg-blue-dark min-h-[90px] flex justify-between items-center px-[10vw] fixed top-0 w-full z-[101]"
+      >
         <div className="logo__wrap">
           <Link href="/" className="flex justify-center">
             <Image
@@ -41,89 +67,78 @@ const MobileNav = () => {
             />
           </Link>
         </div>
-        <div
-          className={`h-10 w-10 rounded-full flex items-center justify-center border border-white-dark transition-colors duration-400 ${
-            isOpen ? "bg-white-dark" : "bg-blue-dark"
-          }`}
-          onClick={toggleMenu}
-        >
-          <div className="w-6 h-3 flex flex-col justify-between">
-            <div
-              className={`relative w-full h-0.5 transition duration-400 rounded ${
-                isOpen
-                  ? "rotate-45 bg-green-light top-[0.33rem]"
-                  : "bg-white-dark"
-              }`}
-            ></div>
-            <div
-              className={`relative w-full h-0.5 bg-light-color transform transition-transform duration-400 ${
-                isOpen
-                  ? "-rotate-45 bg-green-light bottom-[0.33rem] shadow-lg"
-                  : "bg-white-dark"
-              }`}
-            ></div>
+        <MagneticWrap>
+          <div
+            className={`h-8 w-8 rounded-full flex items-center justify-center border border-white-dark transition-colors duration-400 ${
+              isOpen ? "bg-white-dark" : "bg-blue-dark"
+            }`}
+            onClick={toggleMenu}
+          >
+            <div className="w-4/5 h-3 flex flex-col justify-between">
+              <div
+                className={`relative w-4/5 mx-auto h-0.5 transition duration-400 rounded ${
+                  isOpen
+                    ? "rotate-45 bg-green-light top-[0.33rem]"
+                    : "bg-white-darker top-[0.1rem]"
+                }`}
+              ></div>
+              <div
+                className={`relative w-4/5 mx-auto h-0.5 bg-light-color transform transition-transform duration-400 ${
+                  isOpen
+                    ? "-rotate-45 bg-green-light bottom-[0.33rem] shadow-lg"
+                    : "bg-white-darker bottom-[0.1rem]"
+                }`}
+              ></div>
+            </div>
           </div>
-        </div>
-      </nav>
+        </MagneticWrap>
+      </motion.nav>
 
       {/* Nav Container */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            className="bg-blue-dark fixed top-0 right-0 h-screen w-full overflow-y-scroll flex justify-center items-end z-[100]"
-            initial={{ x: "100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "100%" }}
-            transition={{
-              stiffness: 1000,
-              damping: 10,
-            }}
-          >
-            <div className="menu__inner w-4/5 h-[85%] min-h-26rem flex flex-col justify-between">
-              <div className="links__wrap w-full">
-                <hr />
-                {/* Iterate through NavLink Array */}
-                {navLinks.map((navItem, i) => (
-                  <motion.p
-                    className={`text-2xl ${
-                      i === 0 ? "pt-8 pb-4" : "py-4"
-                    } mx-0 ${
-                      pathname === navItem.link
-                        ? "text-green-light before:content-['•'] before:mr-4"
-                        : ""
-                    }`}
-                    key={i}
-                    onClick={toggleMenu}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                  >
-                    <Link className="opacity-80" href={navItem.link}>
-                      {navItem.title}
-                    </Link>
-                  </motion.p>
-                ))}
-                <hr className="mt-4" />
+          <>
+            <motion.div
+              className="bg-blue-dark fixed top-0 right-0 max-w-[26rem] h-screen w-full overflow-y-scroll flex justify-center items-end z-[100] shadow-xl"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ stiffness: 600 }}
+            >
+              <div className="relative w-full px-[10vw] h-[85%] min-h-26rem flex flex-col justify-between">
+                <div className="w-full">
+                  <hr />
+                  <div className="py-4">
+                    {/* Iterate through NavLink Array */}
+                    {navLinks.map((navItem, i) => (
+                      <p
+                        className={`text-2xl py-4 mx-0 transition hover:opacity-80 ${
+                          pathname === navItem.link
+                            ? "text-white-darker before:content-['•'] before:mr-4"
+                            : ""
+                        }`}
+                        key={i}
+                        onClick={toggleMenu}
+                      >
+                        <Link className="opacity-80" href={navItem.link}>
+                          {navItem.title}
+                        </Link>
+                      </p>
+                    ))}
+                  </div>
+                  <hr className="mt-4" />
+                  <ContactDetails />
+                </div>
               </div>
-
-              <motion.div
-                className="relative w-full h-full px-0 border"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
-                <h3 className="text-xl">Ways to Get in Touch</h3>
-                <Link href="/" className="flex items-center my-4 mx-0">
-                  <FaPhoneAlt className="contact__icon h-4 w-4 rounded-full text-white-dark mr-4" />
-                  <p className="text-sm">+44 7413 977 023</p>
-                </Link>
-                <Link href="/" className="flex items-center my-4 mx-0">
-                  <MdAlternateEmail className="contact__icon h-4 w-4 rounded-full text-white-dark mr-4" />
-                  <p className="text-sm tracking-wider">hello@nickf.io</p>
-                </Link>
-              </motion.div>
-            </div>
-          </motion.div>
+              <Footer />
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed top-0 left-0 w-full h-screen z-[99] backdrop-blur"
+            />
+          </>
         )}
       </AnimatePresence>
     </>

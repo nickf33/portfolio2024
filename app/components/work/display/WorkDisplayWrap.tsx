@@ -1,5 +1,5 @@
 "use client";
-import WorkDisplay from "./display/WorkDisplay";
+import WorkDisplay from "./WorkDisplay";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WorkWrap = ({ workData }) => {

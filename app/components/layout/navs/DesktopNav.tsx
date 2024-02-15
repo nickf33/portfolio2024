@@ -3,6 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/images/logo/logo.png";
+import { useState } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import MagneticWrap from "../../ui/MagneticWrap";
 
 const links = [
   { linkText: "about", url: "about" },
@@ -13,22 +16,42 @@ const links = [
 const NavLink = ({ linkText, url }) => {
   return (
     <>
-      <Link
-        href={`/${url}`}
-        className="text-2xs font-semibold hover:text-green-light hover:underline"
-      >
-        <p>{linkText}</p>
-      </Link>
+      <MagneticWrap>
+        <Link
+          href={`/${url}`}
+          className="text-2xs font-semibold hover:text-green-light hover:underline"
+        >
+          <p>{linkText}</p>
+        </Link>
+      </MagneticWrap>
     </>
   );
 };
 
 export default function DesktopNav() {
+  const [isHidden, setIsHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (latest > previous && latest > 150) {
+      setIsHidden(true);
+    } else {
+      setIsHidden(false);
+    }
+  });
+
   return (
     <>
-      <nav
-        id="nav__bar"
-        className="absolute top-0 min-h-[60px] w-full py-4 px-0 z-50"
+      <motion.nav
+        variants={{
+          visible: { y: 0 },
+          hidden: { y: -100 },
+        }}
+        animate={isHidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
+        id="navbar"
+        className="fixed top-0 min-h-[60px] w-full py-4 px-0 z-[100] bg-blue-dark"
       >
         <div className="flex justify-between items-center w-4/5 mx-auto my-0 max-w-custom">
           <Link href="/" className="flex justify-center">
@@ -47,7 +70,7 @@ export default function DesktopNav() {
             ))}
           </div>
         </div>
-      </nav>
+      </motion.nav>
     </>
   );
 }

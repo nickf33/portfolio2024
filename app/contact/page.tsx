@@ -1,16 +1,16 @@
 import ContactWrap from "@/app/components/contact/ContactWrap";
+import { getAbout } from "@/cms/sanity-utils";
 
 const data = {
   title: "Let's Talk",
-  text: "If you would like to get in touch to discuss any available opportunites",
+  text: "I am currently looking for opportunities post graduation and be keen to hear from potential employers and recruiters. ",
 };
 
-const Contact = () => {
+export default async function Contact() {
+  const aboutData = await getAbout();
   return (
     <>
-      <ContactWrap data={data} />
+      <ContactWrap data={data} img={aboutData.mainImg} />
     </>
   );
-};
-
-export default Contact;
+}

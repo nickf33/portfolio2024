@@ -1,5 +1,5 @@
 import { getWorks } from "@/cms/sanity-utils";
-import WorkWrap from "../components/work/WorkWrap";
+import WorkWrap from "../components/work/display/WorkDisplayWrap";
 
 export default async function Works() {
   const workData = await getWorks();

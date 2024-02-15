@@ -16,7 +16,7 @@ export default function WorkDisplay({ workData }) {
     { text: "dev", category: "Dev" },
   ];
 
-  const handleCategoryClick = (category) => {
+  const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
   };
 
@@ -63,10 +63,10 @@ export default function WorkDisplay({ workData }) {
   return (
     <>
       {/* Filter buttons */}
-      <div className="sticky top-0 flex justify-between bg-blue-dark py-[1.8rem] z-50 lgMobile:flex-col tablet:sticky tablet:top-[60px]">
-        <h2 className="text-xl">Selected Work Projects</h2>
-        <div className="relative flex justify-between lgMobile:mt-4">
-          <div className="relative flex justify-between w-full max-w-[16rem]">
+      <div className="relative top-0 w-full flex justify-between bg-blue-dark z-50 py-4 tablet:flex-col">
+        <h2 className="text-base tablet:text-2xl">Selected Work Projects</h2>
+        <div className="relative flex justify-between tablet:mt-4">
+          <div className="relative flex justify-between w-full max-w-[16rem] tablet:ml-auto">
             {filterOptions.map((option, idx) => (
               <FilterButton
                 key={idx}
@@ -97,25 +97,25 @@ export default function WorkDisplay({ workData }) {
               transition={{ delay: idx / 10 }}
               className="relative flex items-center justify-between pl-4 h-32 max-h-[180px] overflow-hidden tablet:flex-col-reverse tablet:max-h-none tablet:h-auto tablet:px-0 tablet:py-8"
             >
-              <div className="relative m-0 tablet:w-full tablet:mt-4">
+              <div className="relative m-0 tablet:w-full">
                 <div className="flex items-center">
-                  <div className="p-2 rounded-full border text-white-dark font-bold mr-2 scale-50 transition duration-300 group-hover:scale-75 group-hover:bg-gradient-to-br group-hover:from-green-light group-hover:to-blue-light group-hover:text-blue-dark group-hover:border-0 tablet:hidden">
+                  <div className="p-2 rounded-full border mt-[-0.25rem] text-white-dark font-bold mr-2 scale-50 transition duration-300 group-hover:scale-75 group-hover:bg-gradient-green group-hover:text-blue-dark group-hover:border-0 tablet:hidden">
                     <IoIosArrowRoundForward />
                   </div>
-                  <h2 className="relative text-xl lgMobile:text-lg opacity-60 transition duration-300 origin-left group-hover:scale-150 group-hover:opacity-100 tablet:opacity-100 tablet:group-hover:scale-100">
+                  <h2 className="relative text-xl opacity-60 transition duration-300 origin-left group-hover:scale-150 group-hover:opacity-100 tablet:opacity-100 tablet:group-hover:scale-100 tablet:text-2xl tablet:mb-4">
                     {item.name}
                   </h2>
                 </div>
 
                 <div className="overflow-hidden ml-12 tablet:ml-0">
-                  <p className="text-2xs translate-y-full group-hover:translate-y-0 transition ease-out duration-300 tablet:translate-y-0">
+                  <p className="text-2xs translate-y-full group-hover:translate-y-0 transition ease-out duration-300 tablet:translate-y-0 tablet:text-xs">
                     {item.role}
                   </p>
                 </div>
               </div>
               <div className="translate-y-full h-full overflow-hidden transition ease-out duration-300 group-hover:translate-y-0 tablet:translate-y-0 tablet:w-full tablet:h-72">
                 <Image
-                  className="relative object-cover h-36 w-48 transition duration-300 tablet:w-full tablet:h-72 tablet:hover:scale-105"
+                  className="relative object-cover h-36 w-48 transition duration-300 tablet:w-full tablet:h-64 tablet:hover:scale-105"
                   src={item.landingImg.url}
                   alt={item.landingImg.alt}
                   width={3000}

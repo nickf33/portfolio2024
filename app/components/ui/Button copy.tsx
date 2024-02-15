@@ -4,7 +4,6 @@ import classNames from "classnames";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import Line from "./Line";
-import MagneticWrap from "./MagneticWrap";
 
 interface ButtonProps {
   link: string;
@@ -20,7 +19,7 @@ const Button = ({
   label,
 }: ButtonProps): JSX.Element => {
   const buttonClasses = classNames(
-    "relative flex items-center w-full mx-auto",
+    "relative flex items-center w-full mx-auto tablet:pt-6 tablet:pb-6 lgMobile:pt-8",
     additionalClass
   );
   const router = useRouter();
@@ -28,14 +27,14 @@ const Button = ({
   return (
     <>
       <div className={buttonClasses}>
-        <hr className="border-white-dark" />
+        <Line />
         <motion.div
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onClick={() => router.push(`/${link}`)}
           dragTransition={{ bounceStiffness: 1000, bounceDamping: 15 }}
           dragElastic={0.1}
-          className="link absolute flex justify-center items-center left-[26rem] bg-blue-dark h-20 w-20 rounded-full border border-white-dark tablet:right-0 tablet:left-auto lgMobile:h-10 lgMobile:w-20 hover:bg-white-dark hover:text-green-light"
+          className="link absolute flex justify-center items-center left-[26rem] bg-blue-dark text-sm font-bebas py-2 px-8 min-w-[8rem] rounded-full border border-white-dark tablet:right-0 tablet:left-auto lgMobile:h-20 lgMobile:w-20 hover:bg-white-dark hover:text-green-light"
           aria-label={label}
         >
           {children}

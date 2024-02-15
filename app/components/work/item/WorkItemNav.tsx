@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 export default function WorkNav({ workArray, slug }) {
   const router = useRouter();
 
-  const currentIndex = workArray.findIndex((obj) => obj.slug === slug);
+  const currentIndex = workArray.findIndex((item) => item.slug === slug);
   const prevObject = workArray[currentIndex - 1];
   const nextObject = workArray[currentIndex + 1];
 

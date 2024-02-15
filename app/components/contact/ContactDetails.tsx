@@ -1,31 +1,35 @@
 import Link from "next/link";
-import { FaPhoneAlt } from "react-icons/fa";
-import { MdAlternateEmail } from "react-icons/md";
+import Image from "next/image";
 
-const ContactDetails = () => {
+// Img optional for reusability
+interface ContactDetailsProps {
+  img?: {
+    url: string;
+    alt: string;
+  };
+}
+
+const ContactDetails = ({ img }: ContactDetailsProps) => {
+  // Data
   const contactDetails = [
     {
-      icon: <FaPhoneAlt />,
+      text: "info@nickf.io",
+      link: "mailto:nick.feltham33@gmail.com",
+    },
+    {
       text: "+44 7413 977 023",
       link: "tel:+447413977023",
     },
-    {
-      icon: <MdAlternateEmail />,
-      text: "nick.feltham33@gmail.com",
-      link: "mailto:nick.feltham33@gmail.com",
-    },
   ];
 
-  const Detail = ({ icon, text, link }) => {
+  // Component
+  const ContactComponent = ({ text, link }) => {
     return (
       <>
-        <div className="flex w-full my-2 group">
-          <div className="text-sm mr-2 transition duration-300 group-hover:text-green-light tablet:hidden">
-            {icon}
-          </div>
+        <div className="link flex w-full mt-2 group items-center justify-end tablet:justify-start tablet:mt-6">
           <Link
             href={link}
-            className="link text-2xs font-mont font-bold transition duration-300 group-hover:text-green-light"
+            className="text-2xs tracking-widest text-white-dark font-mont transition duration-300 group-hover:text-white-dark tablet:text-xs"
           >
             {text}
           </Link>
@@ -36,15 +40,21 @@ const ContactDetails = () => {
 
   return (
     <>
-      <div className="relative flex flex-col justify-end w-full h-full pt-2 pb-4 tablet:pt-0">
-        <h3 className="text-sm text-white-dark mb-2">Contact Details:</h3>
-        {contactDetails.map((item, idx) => (
-          <Detail
-            key={idx}
-            icon={item.icon}
-            text={item.text}
-            link={item.link}
+      <div className="relative flex flex-col items-end justify-end w-full tablet:items-start tablet:mt-12">
+        {img && (
+          <Image
+            src={img.url}
+            alt={img.alt}
+            width={500}
+            height={500}
+            className="rounded-full shadow h-8 w-8 mb-4"
           />
+        )}
+        <h3 className="text-2xs text-white-darker mb-2 tablet:text-xs">
+          Contact Details:
+        </h3>
+        {contactDetails.map((item, idx) => (
+          <ContactComponent key={idx} text={item.text} link={item.link} />
         ))}
       </div>
     </>
