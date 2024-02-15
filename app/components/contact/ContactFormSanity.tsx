@@ -186,7 +186,7 @@ const ContactForm = () => {
           <h2 className="text-2xl mb-4">SUCCESS</h2>
           <p className="text-xs">
             Thanks for getting in touch. <br />
-            I'll be in touch as soon as I can!
+            I will be in touch as soon as I can!
             <br />
             <br />
             Thanks again!

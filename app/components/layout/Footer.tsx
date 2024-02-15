@@ -6,7 +6,11 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MagneticWrap from "../ui/MagneticWrap";
 
-const icons = [<FaFacebookF />, <FaLinkedinIn />, <FiGithub />];
+const icons = [
+  <FaFacebookF key="0" />,
+  <FaLinkedinIn key="1" />,
+  <FiGithub key="2" />,
+];
 
 const SocialLink = ({ link, idx }) => {
   return (
