@@ -58,18 +58,17 @@ const WorkItemWrap = ({ data, workList }) => {
             <WorkItemNav workArray={workList} slug={data.slug} />
 
             <div className="relative mt-40">
-              <h1 className="text-xl">Let\'s Talk</h1>
+              // eslint-disable-next-line react/no-unescaped-entities
+              <h1 className="text-xl">Let's Talk</h1>
               <div className="absolute top-4 right-0 flex items-center text-2xs group transition duration-300 laptop:hidden">
                 <div className="relative transition duration-300 group-hover:translate-x-[-0.5rem]">
                   <IoIosArrowRoundBack />
                 </div>
                 <p className="text-[0.4rem]">drag me</p>
               </div>
-
               <Button link="contact" label="contact button">
                 Contact
               </Button>
-
               <p className="text-2xs text-white-dark font-medium my-8 max-w-[22rem] tablet:text-xs">
                 I aint for sale mother fucker and dont even try and touch me.
                 You cant afford me baby. What do you mean Calhoun, I thought we
