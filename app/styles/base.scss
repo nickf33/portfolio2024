@@ -230,3 +230,11 @@ select:-webkit-autofill:focus {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.text-stroke {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--light-color);
+  text-stroke-width: 1px;
+  text-stroke-color: var(--light-color);
+  color: transparent;
+}

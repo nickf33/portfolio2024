@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logo from "@/images/logo/logo.png";
+import logo from "@/images/logo/nfio_logo.svg";
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import MagneticWrap from "../../ui/MagneticWrap";
@@ -19,7 +19,7 @@ const NavLink = ({ linkText, url }) => {
       <MagneticWrap>
         <Link
           href={`/${url}`}
-          className="text-2xs font-semibold hover:text-green-light"
+          className="text-2xs font-medium hover:text-green-light"
         >
           <p>{linkText}</p>
         </Link>
@@ -60,7 +60,7 @@ export default function DesktopNav() {
               alt="logo"
               width={200}
               height={200}
-              className="h-auto w-12"
+              className="h-auto w-12 min-w-[70px]"
               priority
             />
           </Link>

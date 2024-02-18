@@ -62,7 +62,7 @@ const MobileNav = () => {
               alt="logo"
               width={200}
               height={200}
-              className="h-auto w-20"
+              className="h-auto w-16"
               priority
             />
           </Link>
