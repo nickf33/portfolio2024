@@ -1,8 +1,8 @@
-// next.config.js
 const path = require("path");
 
-module.exports = {
+const nextConfig = {
   images: {
+    // Define remote image patterns for Next.js Image component
     remotePatterns: [
       {
         protocol: "https",
@@ -11,7 +11,11 @@ module.exports = {
       },
     ],
   },
-  sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
-  },
 };
+
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+  disbale: false,
+});
+
+module.exports = withPWA(nextConfig);
