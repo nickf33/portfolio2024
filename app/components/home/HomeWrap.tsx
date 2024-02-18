@@ -54,7 +54,7 @@ export default function HomeWrap() {
             </p>
 
             <Button
-              link="hello"
+              link="contact"
               label="Contact text"
               additionalClass="lgMobile:pt-10 lgMobile:pb-4"
             >

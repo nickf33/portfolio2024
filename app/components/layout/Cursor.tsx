@@ -53,16 +53,12 @@ export default function Cursor() {
 
   const handleLinkHover = () => {
     const cursor = document.querySelector(".cursor");
-    const dot = document.querySelector(".dot");
     cursor?.classList.add("grow");
-    dot?.classList.add("hide");
   };
 
   const handleLinkLeave = () => {
     const cursor = document.querySelector(".cursor");
-    const dot = document.querySelector(".dot");
     cursor?.classList.remove("grow");
-    dot?.classList.remove("hide");
   };
 
   useEffect(() => {
@@ -79,9 +75,7 @@ export default function Cursor() {
     // Reset cursor state when the page changes
     const resetCursorState = () => {
       const cursor = document.querySelector(".cursor");
-      const dot = document.querySelector(".dot");
       cursor?.classList.remove("grow");
-      dot?.classList.remove("hide");
     };
 
     resetCursorState(); // Reset initially
@@ -102,7 +96,6 @@ export default function Cursor() {
   return (
     <>
       <motion.div className="cursor tablet:hidden" style={cursorStyle}>
-        <motion.div className="dot" style={dotStyle}></motion.div>
         <div className="cursor__fade"></div>
       </motion.div>
     </>

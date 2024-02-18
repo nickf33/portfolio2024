@@ -26,12 +26,11 @@ const ContactDetails = ({ img }: ContactDetailsProps) => {
   const ContactComponent = ({ text, link }) => {
     return (
       <>
-        <div className="link flex w-full mt-2 group items-center justify-end tablet:justify-start tablet:mt-6">
-          <Link
-            href={link}
-            className="text-2xs tracking-widest text-white-dark font-mont transition duration-300 group-hover:text-white-dark tablet:text-xs"
-          >
-            {text}
+        <div className="flex w-full mt-3 group items-center justify-end tablet:justify-start hover:underline">
+          <Link href={link}>
+            <p className="text-2xs text-white-dark font-mont transition duration-300 group-hover:text-white-dark tablet:text-xs">
+              {text}
+            </p>
           </Link>
         </div>
       </>
@@ -50,7 +49,7 @@ const ContactDetails = ({ img }: ContactDetailsProps) => {
             className="rounded-full shadow h-8 w-8 mb-4"
           />
         )}
-        <h3 className="text-2xs text-white-darker mb-2 tablet:text-xs">
+        <h3 className="text-2xs text-white-darker tablet:text-xs">
           Contact Details:
         </h3>
         {contactDetails.map((item, idx) => (

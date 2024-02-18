@@ -3,7 +3,6 @@
 import classNames from "classnames";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import Line from "./Line";
 import MagneticWrap from "./MagneticWrap";
 
 interface ButtonProps {

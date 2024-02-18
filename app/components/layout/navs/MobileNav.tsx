@@ -99,7 +99,7 @@ const MobileNav = () => {
         {isOpen && (
           <>
             <motion.div
-              className="bg-blue-dark fixed top-0 right-0 max-w-[26rem] h-screen w-full overflow-y-scroll flex justify-center items-end z-[100] shadow-xl"
+              className="bg-blue-dark fixed top-0 right-0 max-w-[26rem] h-screen w-full overflow-y-scroll flex justify-center items-end z-[100] shadow-[0px_35px_65px_rgba(255,255,255,0.1)]"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}

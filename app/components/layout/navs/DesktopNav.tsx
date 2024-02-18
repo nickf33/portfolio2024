@@ -19,7 +19,7 @@ const NavLink = ({ linkText, url }) => {
       <MagneticWrap>
         <Link
           href={`/${url}`}
-          className="text-2xs font-semibold hover:text-green-light hover:underline"
+          className="text-2xs font-semibold hover:text-green-light"
         >
           <p>{linkText}</p>
         </Link>
