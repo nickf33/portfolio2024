@@ -61,7 +61,7 @@ export default function HomeWrap() {
               Contact
             </Button>
             <div className="text__wrap mt-8 sm-mw">
-              <p className="text-white-darker text-[12px] max-w-[12rem] tablet:text-xs">
+              <p className="text-white-darker font-bold text-[12px] max-w-[12rem] tablet:text-xs">
                 Crafted in Figma, powered by Next.js and Sanity CMS. Built with
                 with Typescript and Tailwind.
               </p>

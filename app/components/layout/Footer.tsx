@@ -17,7 +17,10 @@ const SocialLink = ({ link, idx }) => {
     <>
       <MagneticWrap>
         <Link target="_blank" href={link} rel="noopener noreferrer">
-          <div className="ml-6 text-gradient-green inline-block text-xs hover:text-red-500 link">
+          <div
+            className="ml-6 text-gradient-green inline-block text-xs hover:text-red-500 link"
+            aria-label="Social Media Icon"
+          >
             {icons[idx]}
           </div>
         </Link>

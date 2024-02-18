@@ -16,21 +16,21 @@
   overflow: visible;
   mix-blend-mode: difference;
   &.grow {
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     transition: width 0.2s ease-in, height 0.2s ease-in;
     background-color: var(--cursor-color);
   }
-  .dot {
-    height: 5px;
-    width: 5px;
-    border-radius: 50%;
-    background-color: var(--light-color);
-    mix-blend-mode: normal;
-    &.hide {
-      display: none;
-    }
-  }
+  // .dot {
+  //   height: 1px;
+  //   width: 1px;
+  //   border-radius: 50%;
+  //   background-color: var(--light-color);
+  //   mix-blend-mode: normal;
+  //   &.hide {
+  //     display: none;
+  //   }
+  // }
 }
 
 .cursor__fade {

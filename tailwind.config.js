@@ -53,7 +53,7 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-green": "linear-gradient(to bottom right, #01EFEF, #09D89D)",
-        "gradient-blue": "linear-gradient(to bottom right, #74DEFF, #7209B7)",
+        "gradient-blue": "linear-gradient(to bottom right, #74DEFF, #4CC9F0)",
         "gradient-red": "linear-gradient(to bottom right, #FC1632, #F72585)",
       },
     },

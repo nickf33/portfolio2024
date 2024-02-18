@@ -1,7 +1,10 @@
 // next.config.js
 const path = require("path");
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+});
 
-module.exports = {
+module.exports = withPWA({
   images: {
     remotePatterns: [
       {
@@ -14,4 +17,4 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-};
+});
