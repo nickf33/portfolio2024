@@ -93,10 +93,14 @@ export default function Cursor() {
     };
   }, [pathname]);
 
-  const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints;
+  // Check if it's a touch device
+  const isTouchDevice =
+    typeof window !== "undefined" &&
+    ("ontouchstart" in window || navigator.maxTouchPoints);
 
   return (
     <>
+      {/* Render cursor only if it's not a touch device */}
       {!isTouchDevice && (
         <motion.div className="cursor tablet:hidden" style={cursorStyle}>
           <div className="cursor__fade"></div>
