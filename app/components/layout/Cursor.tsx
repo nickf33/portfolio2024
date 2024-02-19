@@ -17,7 +17,7 @@ export default function Cursor() {
   });
 
   useEffect(() => {
-    const mouseMove = (e) => {
+    const mouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
@@ -93,11 +93,15 @@ export default function Cursor() {
     };
   }, [pathname]);
 
+  const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints;
+
   return (
     <>
-      <motion.div className="cursor tablet:hidden" style={cursorStyle}>
-        <div className="cursor__fade"></div>
-      </motion.div>
+      {!isTouchDevice && (
+        <motion.div className="cursor tablet:hidden" style={cursorStyle}>
+          <div className="cursor__fade"></div>
+        </motion.div>
+      )}
     </>
   );
 }

@@ -32,7 +32,9 @@ const Template = ({ data, category, index }) => {
             {data.endDate}
           </p>
           {!isOpen && (
-            <p className="link text-2xs mt-2 underline">View Details</p>
+            <p className="link text-2xs mt-2 underline hover:text-green-light">
+              View Details
+            </p>
           )}
           <div className="link absolute top-2 right-4 p-2 grid place-content-center rounded-full border mt-[-0.25rem] w-4 h-4 text-xs text-white-dark font-bold mr-2 rotate-[180deg] transition duration-300 group-hover:scale-150 group-hover:rotate-[140deg] group-hover:bg-gradient-green group-hover:text-blue-dark">
             <IoIosArrowRoundForward />
