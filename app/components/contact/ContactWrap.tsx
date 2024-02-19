@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 const ContactWrap = ({ data, img }) => {
   return (
     <>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
           key="content"
           initial={{ opacity: 0 }}

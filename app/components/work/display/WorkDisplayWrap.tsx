@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const WorkWrap = ({ workData }) => {
   return (
-    <AnimatePresence>
+    <AnimatePresence mode="wait">
       <motion.div
         key="content"
         initial={{ opacity: 0 }}
