@@ -32,7 +32,7 @@ const Template = ({ data, category, index }) => {
             {data.endDate}
           </p>
           {!isOpen && (
-            <p className="link text-2xs mt-2 underline hover:text-green-light">
+            <p className="text-2xs mt-2 text-white-dark hover:bg-gradient-green hover:text-transparent hover:bg-clip-text inline-block">
               View Details
             </p>
           )}

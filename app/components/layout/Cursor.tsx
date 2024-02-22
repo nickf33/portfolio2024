@@ -11,11 +11,6 @@ export default function Cursor() {
     y: 0,
   });
 
-  const [dotPosition, setDotPosition] = useState({
-    x: 0,
-    y: 0,
-  });
-
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
       const mouseX = e.clientX;
@@ -25,13 +20,6 @@ export default function Cursor() {
         x: mouseX,
         y: mouseY,
       });
-
-      setTimeout(() => {
-        setDotPosition({
-          x: mouseX,
-          y: mouseY,
-        });
-      }, 50);
     };
 
     window.addEventListener("mousemove", mouseMove);
@@ -46,11 +34,6 @@ export default function Cursor() {
     left: `${mousePosition.x}px`,
   };
 
-  const dotStyle = {
-    top: `${dotPosition.y}px`,
-    left: `${dotPosition.x}px`,
-  };
-
   const handleLinkHover = () => {
     const cursor = document.querySelector(".cursor");
     cursor?.classList.add("grow");
@@ -62,10 +45,9 @@ export default function Cursor() {
   };
 
   useEffect(() => {
-    const links = document.querySelectorAll("a");
     const linkClasses = document.querySelectorAll(".link");
 
-    const linkElements = [...links, ...linkClasses];
+    const linkElements = [...linkClasses];
 
     linkElements.forEach((linkItem) => {
       linkItem.addEventListener("mouseenter", handleLinkHover);
@@ -79,7 +61,6 @@ export default function Cursor() {
     };
 
     resetCursorState(); // Reset initially
-    // Add an event listener to reset cursor state on page change
     window.addEventListener("beforeunload", resetCursorState);
 
     return () => {
@@ -93,19 +74,51 @@ export default function Cursor() {
     };
   }, [pathname]);
 
-  // Check if it's a touch device
-  const isTouchDevice =
-    typeof window !== "undefined" &&
-    ("ontouchstart" in window || navigator.maxTouchPoints);
+  const handleOutlineHover = () => {
+    const cursor = document.querySelector(".cursor");
+    cursor?.classList.add("outline");
+  };
+
+  const handleOutlineLeave = () => {
+    const cursor = document.querySelector(".cursor");
+    cursor?.classList.remove("outline");
+  };
+
+  useEffect(() => {
+    const outlineClasses = document.querySelectorAll(".outline");
+
+    const outlineElements = [...outlineClasses];
+
+    outlineElements.forEach((outlineItem) => {
+      outlineItem.addEventListener("mouseenter", handleOutlineHover);
+      outlineItem.addEventListener("mouseleave", handleOutlineLeave);
+    });
+
+    // Reset cursor state when the page changes
+    const resetCursorState = () => {
+      const cursor = document.querySelector(".cursor");
+      cursor?.classList.remove("grow");
+    };
+
+    resetCursorState(); // Reset initially
+    window.addEventListener("beforeunload", resetCursorState);
+
+    return () => {
+      outlineElements.forEach((outlineItem) => {
+        outlineItem.removeEventListener("mouseenter", handleOutlineHover);
+        outlineItem.removeEventListener("mouseleave", handleOutlineLeave);
+      });
+
+      // Remove the event listener on component unmount
+      window.removeEventListener("beforeunload", resetCursorState);
+    };
+  }, [pathname]);
 
   return (
     <>
-      {/* Render cursor only if it's not a touch device */}
-      {!isTouchDevice && (
-        <motion.div className="cursor tablet:hidden" style={cursorStyle}>
-          <div className="cursor__fade"></div>
-        </motion.div>
-      )}
+      <motion.div className="cursor tablet:hidden" style={cursorStyle}>
+        <div className="cursor__fade"></div>
+      </motion.div>
     </>
   );
 }

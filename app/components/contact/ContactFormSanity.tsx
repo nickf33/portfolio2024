@@ -174,7 +174,7 @@ const ContactForm = () => {
             <hr className="border-white-dark" />
             <button
               type="submit"
-              className="link absolute h-16 w-16 border rounded-full text-xs bg-blue-dark z-10 right-0 transition duration-300 border-white-dark tablet:right-0 tablet:left-auto lgMobile:h-20 lgMobile:w-20 hover:bg-white-dark hover:text-green-light"
+              className="link absolute h-16 w-16 border rounded-full text-xs bg-blue-dark z-10 right-0 transition duration-300 border-white-dark tablet:right-0 tablet:left-auto lgMobile:h-20 lgMobile:w-20 hover:bg-white-dark hover:text-green-light focus:shadow-[0px_0px_15px_#0CDFC7]"
               disabled={formik.isSubmitting}
             >
               {formik.isSubmitting ? "SENDING..." : "SEND IT!"}

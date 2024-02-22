@@ -6,6 +6,7 @@ import WorkHistory from "./WorkHistory";
 import Skills from "./Skills";
 import Interests from "./Interests";
 import { motion, AnimatePresence } from "framer-motion";
+import ProgressBar from "../ui/ProgressBar";
 
 const AboutWrap = ({
   aboutData,

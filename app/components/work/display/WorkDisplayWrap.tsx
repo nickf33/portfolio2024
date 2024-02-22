@@ -1,6 +1,7 @@
 "use client";
 import WorkDisplay from "./WorkDisplay";
 import { motion, AnimatePresence } from "framer-motion";
+import ProgressBar from "../../ui/ProgressBar";
 
 const WorkWrap = ({ workData }) => {
   return (
@@ -16,7 +17,7 @@ const WorkWrap = ({ workData }) => {
       >
         <div className="w-4/5 mx-auto max-w-custom">
           <h1 className="text-2xl">My Work</h1>
-          <div className="w-8 h-[0.2rem] bg-gradient-to-br from-green-light to-blue-light my-4"></div>
+          <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
           <p className="text-2xs text-white-dark font-medium my-8 max-w-[26rem] tablet:text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, sint
             facilis soluta quia nemo explicabo in aut ab fuga. Vero beatae neque

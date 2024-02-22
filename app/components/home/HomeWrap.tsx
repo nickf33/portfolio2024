@@ -9,7 +9,7 @@ const ExternalLink = ({ text, link }) => {
     <Link
       target="_blank"
       href={link}
-      className="link bg-gradient-blue text-transparent bg-clip-text inline-block"
+      className="outline bg-gradient-blue text-transparent bg-clip-text inline-block"
       rel="noopener noreferrer"
     >
       {text}
@@ -39,7 +39,7 @@ export default function HomeWrap() {
           exit={{ opacity: 0 }}
           transition={{ type: "tween", duration: 1 }}
           id="hero"
-          className="relative items-center w-full min-h-screen pt-[20vh]"
+          className="relative flex items-center justify-center w-full min-h-screen"
         >
           <div className="w-4/5 mx-auto max-w-custom">
             <h1 className="text-2xl">Hi, I am Nick</h1>
