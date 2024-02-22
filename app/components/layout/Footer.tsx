@@ -37,7 +37,7 @@ const Footer = () => {
   return (
     <>
       {!hideFooter && (
-        <footer className="absolute bottom-0 w-full h-12 bg-blue-dark">
+        <footer className="absolute bottom-0 w-full h-12">
           <div className="flex justify-between items-center h-full w-4/5 mx-auto max-w-custom">
             <div className="text-2xs bg-gradient-green text-transparent bg-clip-text inline-block">
               Portfolio 2024

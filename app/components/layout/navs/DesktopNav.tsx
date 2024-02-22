@@ -51,7 +51,7 @@ export default function DesktopNav() {
         animate={isHidden ? "hidden" : "visible"}
         transition={{ duration: 0.35 }}
         id="navbar"
-        className="fixed top-0 h-[60px] w-full py-4 px-0 z-[100] bg-blue-dark"
+        className="fixed top-0 h-[60px] w-full py-4 px-0 z-[100]"
       >
         <div className="flex justify-between items-center w-4/5 mx-auto my-0 max-w-custom">
           <Link href="/" className="link flex justify-center">

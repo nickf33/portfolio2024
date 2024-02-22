@@ -4,6 +4,7 @@ import "@/app/styles/index.scss";
 import NavigationWrap from "@/app/components/layout/navs/NavigationWrap";
 import Footer from "@/app/components/layout/Footer";
 import Cursor from "@/app/components/layout/Cursor";
+import { GradientBackgroundAnimation } from "./components/ui/GradientBackgroundAnimation";
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",
@@ -24,9 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Background /> */}
         <NavigationWrap />
         <main className="relative min-h-screen">
+          {/* <GradientBackgroundAnimation /> */}
           {children}
           <Footer />
         </main>
