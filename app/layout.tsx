@@ -27,7 +27,7 @@ export default function RootLayout({
       <body>
         <NavigationWrap />
         <main className="relative min-h-screen">
-          {/* <GradientBackgroundAnimation /> */}
+          <GradientBackgroundAnimation />
           {children}
           <Footer />
         </main>
