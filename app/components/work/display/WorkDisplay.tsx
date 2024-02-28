@@ -63,7 +63,7 @@ export default function WorkDisplay({ workData }) {
   return (
     <>
       {/* Filter buttons */}
-      <div className="relative top-0 w-full flex justify-between bg-blue-dark z-50 py-4 tablet:flex-col">
+      <div className="relative top-0 w-full flex justify-between z-50 py-4 tablet:flex-col">
         <h2 className="text-base tablet:text-2xl">Selected Work Projects</h2>
         <div className="relative flex justify-between tablet:mt-4">
           <div className="relative flex justify-between w-full max-w-[16rem] tablet:ml-auto">

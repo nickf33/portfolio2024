@@ -4,7 +4,7 @@ const Interests = ({ interestsData }: { interestsData: string }) => {
   return (
     <>
       {interestsData && (
-        <Template data={interestsData} category="Interests" index="0" />
+        <Template data={interestsData} category="interests" index="0" />
       )}
     </>
   );

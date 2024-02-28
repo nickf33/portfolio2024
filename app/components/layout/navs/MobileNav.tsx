@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   motion,
   AnimatePresence,
@@ -23,6 +23,7 @@ const navLinks = [
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   // Hide nav on scroll
@@ -37,6 +38,18 @@ const MobileNav = () => {
       setIsHidden(false);
     }
   });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setIsScrolled(scrollPosition > 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   // toggle nav
   const toggleMenu = () => {
@@ -53,7 +66,9 @@ const MobileNav = () => {
         }}
         animate={isHidden && !isOpen ? "hidden" : "visible"}
         transition={{ duration: 0.35, ease: "easeInOut" }}
-        className="bg-blue-dark min-h-[90px] flex justify-between items-center px-[10vw] fixed top-0 w-full z-[101]"
+        className={`min-h-[90px] flex justify-between items-center px-[10vw] fixed top-0 w-full z-[101] ${
+          isScrolled ? "backdrop-blur-2xl" : ""
+        }`}
       >
         <div className="logo__wrap">
           <Link href="/" className="flex justify-center">

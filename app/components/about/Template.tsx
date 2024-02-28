@@ -2,11 +2,12 @@ import { useState } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 const Template = ({ data, category, index }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(
+    category === "education" || category === "interests" ? true : false
+  );
 
   const accordionToggle = () => {
     setIsOpen(!isOpen);
-    console.log(isOpen);
   };
 
   return (
@@ -31,11 +32,9 @@ const Template = ({ data, category, index }) => {
             <span className={data.startDate ? "mx-1" : "hidden"}> ━ </span>{" "}
             {data.endDate}
           </p>
-          {!isOpen && (
-            <p className="text-2xs mt-2 text-white-dark hover:bg-gradient-green hover:text-transparent hover:bg-clip-text inline-block">
-              View Details
-            </p>
-          )}
+          <p className="text-2xs mt-2 text-white-dark hover:bg-gradient-green underline hover:text-transparent hover:bg-clip-text inline-block">
+            {!isOpen ? "Open Details" : "Close Details"}
+          </p>
           <div className="link absolute top-2 right-4 p-2 grid place-content-center rounded-full border mt-[-0.25rem] w-4 h-4 text-xs text-white-dark font-bold mr-2 rotate-[180deg] transition duration-300 group-hover:scale-150 group-hover:rotate-[140deg] group-hover:bg-gradient-green group-hover:text-blue-dark">
             <IoIosArrowRoundForward />
           </div>
