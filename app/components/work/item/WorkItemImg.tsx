@@ -43,15 +43,15 @@ export default function WorkItemImg({ img }) {
           />
         </motion.div>
       ) : (
-        <motion.div className="relative">
+        <div className="relative">
           <Image
             src={img.url}
             alt={img.alt}
-            width={2000}
-            height={2000}
+            width={5000}
+            height={5000}
             priority={true}
           />
-        </motion.div>
+        </div>
       )}
     </div>
   );
