@@ -74,46 +74,6 @@ export default function Cursor() {
     };
   }, [pathname]);
 
-  const handleOutlineHover = () => {
-    const cursor = document.querySelector(".cursor");
-    cursor?.classList.add("outline");
-  };
-
-  const handleOutlineLeave = () => {
-    const cursor = document.querySelector(".cursor");
-    cursor?.classList.remove("outline");
-  };
-
-  useEffect(() => {
-    const outlineClasses = document.querySelectorAll(".outline");
-
-    const outlineElements = [...outlineClasses];
-
-    outlineElements.forEach((outlineItem) => {
-      outlineItem.addEventListener("mouseenter", handleOutlineHover);
-      outlineItem.addEventListener("mouseleave", handleOutlineLeave);
-    });
-
-    // Reset cursor state when the page changes
-    const resetCursorState = () => {
-      const cursor = document.querySelector(".cursor");
-      cursor?.classList.remove("grow");
-    };
-
-    resetCursorState(); // Reset initially
-    window.addEventListener("beforeunload", resetCursorState);
-
-    return () => {
-      outlineElements.forEach((outlineItem) => {
-        outlineItem.removeEventListener("mouseenter", handleOutlineHover);
-        outlineItem.removeEventListener("mouseleave", handleOutlineLeave);
-      });
-
-      // Remove the event listener on component unmount
-      window.removeEventListener("beforeunload", resetCursorState);
-    };
-  }, [pathname]);
-
   return (
     <>
       <motion.div className="cursor tablet:hidden" style={cursorStyle}>

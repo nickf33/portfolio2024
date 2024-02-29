@@ -9,7 +9,7 @@ const ExternalLink = ({ text, link }) => {
     <Link
       target="_blank"
       href={link}
-      className="outline bg-gradient-blue text-transparent bg-clip-text inline-block"
+      className="link bg-gradient-blue text-transparent bg-clip-text inline-block"
       rel="noopener noreferrer"
     >
       {text}
