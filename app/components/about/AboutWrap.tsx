@@ -29,6 +29,7 @@ const AboutWrap = ({
         <div className="w-4/5 mx-auto max-w-custom">
           <h1 className="text-2xl">{aboutData.title}</h1>
           <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
+
           <p className="text-2xs text-white-dark font-medium my-8 max-w-[26rem] tablet:text-xs">
             {aboutData.statement}
           </p>

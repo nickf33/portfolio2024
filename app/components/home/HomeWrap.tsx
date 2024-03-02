@@ -4,7 +4,7 @@ import Link from "next/link";
 import Button from "@/app/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
-const ExternalLink = ({ text, link }) => {
+const ExternalLink = ({ text, link }: { text: string; link: string }) => {
   return (
     <Link
       target="_blank"

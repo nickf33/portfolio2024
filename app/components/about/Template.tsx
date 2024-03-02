@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { IoIosArrowRoundForward } from "react-icons/io";
+import { motion } from "framer-motion";
 
 const Template = ({ data, category, index }) => {
   const [isOpen, setIsOpen] = useState(
@@ -11,7 +14,12 @@ const Template = ({ data, category, index }) => {
   };
 
   return (
-    <div className="relative flex mt-8 tablet:flex-col tablet:mt-4">
+    <motion.div
+      className="relative flex mt-8 tablet:flex-col tablet:mt-4"
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+    >
       <div className="flex justify-end w-32 tablet:w-full tablet:justify-start">
         <h2
           className={`text-lg text-right tablet:text-xl tablet:mb-4 bg-gradient-green text-transparent bg-clip-text inline-block
@@ -35,6 +43,7 @@ const Template = ({ data, category, index }) => {
           <p className="text-2xs mt-2 text-white-dark hover:bg-gradient-green underline hover:text-transparent hover:bg-clip-text inline-block">
             {!isOpen ? "Open Details" : "Close Details"}
           </p>
+
           <div className="link absolute top-2 right-4 p-2 grid place-content-center rounded-full border mt-[-0.25rem] w-4 h-4 text-xs text-white-dark font-bold mr-2 rotate-[180deg] transition duration-300 group-hover:scale-150 group-hover:rotate-[140deg] group-hover:bg-gradient-green group-hover:text-blue-dark">
             <IoIosArrowRoundForward />
           </div>
@@ -73,7 +82,7 @@ const Template = ({ data, category, index }) => {
           }`}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

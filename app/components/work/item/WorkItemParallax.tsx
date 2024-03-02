@@ -34,7 +34,10 @@ export default function WorkParallax({ parallaxImgs }) {
   }, [switchWidth]);
 
   return (
-    <div ref={container} className="flex mt-32 mr-10 w-full tablet:flex-col">
+    <div
+      ref={container}
+      className="flex mt-32 mr-10 w-full tablet:flex-col tablet:mt-16"
+    >
       {!isMobile ? (
         <>
           <div className="w-full flex-grow basis-[110%]">

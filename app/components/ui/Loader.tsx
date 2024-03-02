@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const container = {
   hidden: { opacity: 0 },
@@ -17,7 +17,7 @@ const variants = {
     transition: {
       repeatType: "mirror" as const,
       repeat: Infinity,
-      stiffness: 500,
+      stiffness: 100,
     },
   },
 };
@@ -29,7 +29,7 @@ const Loader = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="flex w-16 justify-between"
+        className="flex w-12 justify-between"
       >
         <motion.div
           variants={variants}
