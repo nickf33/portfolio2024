@@ -36,11 +36,11 @@ const WorkItemWrap = ({ data, workList }) => {
             <div className="w-8 h-[0.2rem] bg-gradient-to-br from-green-light to-blue-light my-4" />
 
             <WorkItemImg img={data.landingImg} />
-            <WorkItemSpec
+            {/* <WorkItemSpec
               role={data.role}
               tech={data.tech}
               credits={data.credits}
-            />
+            /> */}
 
             <WorkItemDescription
               description={data.description}
