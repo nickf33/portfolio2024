@@ -63,7 +63,7 @@ export default function HomeWrap() {
             <div className="mt-8 sm-mw">
               <p className="text-white-darker text-[12px] max-w-[12rem] tablet:text-xs">
                 Crafted in Figma, powered by Next.js and Sanity CMS. Built with
-                with Typescript and Tailwind.
+                Typescript and Tailwind.
               </p>
             </div>
           </div>
