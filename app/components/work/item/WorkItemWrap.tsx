@@ -15,6 +15,7 @@ const WorkItemWrap = ({ data, workList }) => {
     { url: data.parallaxOne.url, alt: data.parallaxOne.alt },
     { url: data.parallaxTwo.url, alt: data.parallaxTwo.alt },
   ];
+  console.log(data);
   return (
     <>
       <AnimatePresence mode="wait">
