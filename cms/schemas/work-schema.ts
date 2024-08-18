@@ -114,11 +114,6 @@ const work = {
       type: "text", // Text type for the project's conclusion
     },
     {
-      name: "snippet",
-      title: "Snippet",
-      type: "string",
-    },
-    {
       name: "parallaxOne",
       title: "Parallax Image One",
       type: "image",
@@ -143,16 +138,6 @@ const work = {
           type: "string",
         },
       ],
-    },
-    {
-      name: "lowerTitle",
-      title: "Lower Title",
-      type: "string",
-    },
-    {
-      name: "lowerText",
-      title: "Lower Text",
-      type: "string",
     },
     {
       name: "lowerImg",
