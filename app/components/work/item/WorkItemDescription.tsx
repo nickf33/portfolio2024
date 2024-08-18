@@ -10,7 +10,7 @@ const WorkItemDescription = ({ description, url, snippet }) => {
         <Button link={url} label="live site">
           Live Site
         </Button>
-        <p className="text-2xs max-w-[14rem] mt-12 tablet:mt-8">{snippet}</p>
+        <p className="text-2xs max-w-[14rem] mt-12">{snippet}</p>
       </div>
     </>
   );

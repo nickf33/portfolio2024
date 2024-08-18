@@ -36,11 +36,6 @@ const WorkItemWrap = ({ data, workList }) => {
             <div className="w-8 h-[0.2rem] bg-gradient-to-br from-green-light to-blue-light my-4" />
 
             <WorkItemImg img={data.landingImg} />
-            {/* <WorkItemSpec
-              role={data.role}
-              tech={data.tech}
-              credits={data.credits}
-            /> */}
 
             <WorkItemDescription
               description={data.description}
@@ -63,7 +58,6 @@ const WorkItemWrap = ({ data, workList }) => {
                 <div className="relative transition duration-300 group-hover:translate-x-[-0.5rem]">
                   <IoIosArrowRoundBack />
                 </div>
-                <p className="text-[0.4rem]">drag me</p>
               </div>
               <Button link="contact" label="contact button">
                 Contact
