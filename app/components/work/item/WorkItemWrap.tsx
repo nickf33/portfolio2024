@@ -69,9 +69,7 @@ const WorkItemWrap = ({ data, workList }) => {
                 Contact
               </Button>
               <p className="text-2xs text-white-dark font-medium my-8 max-w-[22rem] tablet:text-xs">
-                I aint for sale mother fucker and dont even try and touch me.
-                You cant afford me baby. What do you mean Calhoun, I thought we
-                was meant ot be together. You broke my heart you cold bitch.
+                This will have the conclusion section.
               </p>
             </div>
           </div>
