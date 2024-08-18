@@ -37,6 +37,12 @@ const WorkItemWrap = ({ data, workList }) => {
 
             <WorkItemImg img={data.landingImg} />
 
+            <WorkItemSpec
+              role={data.role}
+              tech={data.tech}
+              credits={data.credits}
+            />
+
             <WorkItemDescription
               description={data.description}
               url={data.url}

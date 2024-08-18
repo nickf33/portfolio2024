@@ -77,9 +77,41 @@ const work = {
       type: "string",
     },
     {
-      name: "description",
-      title: "Description",
-      type: "string",
+      name: "projectOverview",
+      title: "Project Overview",
+      type: "text", // Text type for an in-depth overview
+    },
+    {
+      name: "missionObjective",
+      title: "Mission Objective",
+      type: "text", // Text type for the project's objective
+    },
+    {
+      name: "challenges",
+      title: "Challenges",
+      type: "array", // Dynamic array of objects to hold multiple challenges
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "challengeTitle",
+              title: "Challenge Title",
+              type: "string", // Title for each challenge
+            },
+            {
+              name: "challengeText",
+              title: "Challenge Text",
+              type: "text", // Description of the challenge and how it was overcome
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "conclusion",
+      title: "Conclusion",
+      type: "text", // Text type for the project's conclusion
     },
     {
       name: "snippet",
@@ -101,7 +133,7 @@ const work = {
     },
     {
       name: "parallaxTwo",
-      title: "parallax Image Two",
+      title: "Parallax Image Two",
       type: "image",
       options: { hotspot: true },
       fields: [
