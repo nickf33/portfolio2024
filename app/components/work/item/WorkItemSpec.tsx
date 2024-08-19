@@ -4,7 +4,10 @@ const SpecItem = ({ title, text }) => {
     <>
       <div className="max-w-[8rem] h-full tablet:my-2">
         <p className="text-2xs">
-          <span className="font-mont font-bold">{title}:</span> {text}
+          <span className="font-mont font-bold">
+            {title}:<br />
+          </span>{" "}
+          {text}
         </p>
       </div>
     </>

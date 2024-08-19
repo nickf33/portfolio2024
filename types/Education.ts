@@ -6,6 +6,7 @@ export type Education = {
   brief: string;
   listTitle?: string | null;
   listItems?: { item: string }[];
+  closing: string;
   startDate: string;
   endDate: string;
 };

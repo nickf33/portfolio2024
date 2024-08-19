@@ -23,7 +23,11 @@ export async function getAbout(): Promise<About> {
       closingTitle,
       closingStatement,
     }
-`
+`,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
   );
 }
 // Get all projects
@@ -59,7 +63,11 @@ export async function getWorks(): Promise<Work[]> {
         "alt": lowerImg.alt,
       },
       link,
-    }`
+    }`,
+    {},
+    {
+      next: { revalidate: 60 }, // Revalidate every minute
+    }
   );
 }
 // Get single project
@@ -96,7 +104,10 @@ export async function getWork(slug: string): Promise<Work> {
       },
       link,
     }`,
-    { slug }
+    { slug },
+    {
+      cache: "no-store",
+    }
   );
 }
 
@@ -136,7 +147,11 @@ export async function getResume(): Promise<Resume[]> {
       startDate,
       endDate,
     }
-`
+`,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
   );
 }
 
@@ -151,10 +166,15 @@ export async function getEducation(): Promise<Education> {
       brief,
       listtitle,
       listItems,
+      closing,
       startDate,
       endDate,
     }
-`
+`,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
   );
 }
 
@@ -171,7 +191,11 @@ export async function getSkills(): Promise<Skills> {
         "alt": skillIcon.alt
         }
       }
-    `
+    `,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
   );
 }
 
@@ -184,6 +208,10 @@ export async function getInterests(): Promise<Interests> {
       title,
       brief,
     }
-`
+`,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
   );
 }

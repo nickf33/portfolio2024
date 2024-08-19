@@ -13,12 +13,15 @@ export type Work = {
   tech: string;
   role: string;
   credits: string;
-  description: string;
-  snippet: string;
+  projectOverview: string;
+  missionObjective: string;
+  challenges: {
+    challengeTitle: string;
+    challengeText: string;
+  }[];
+  conclusion: string;
   parallaxOne: WorkImage;
   parallaxTwo: WorkImage;
-  lowerTitle: string;
-  lowerText: string;
   lowerImg: WorkImage;
   link: string;
 };

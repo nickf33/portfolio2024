@@ -41,6 +41,11 @@ const education = {
       ],
     },
     {
+      name: "closing",
+      title: "Closing",
+      type: "string",
+    },
+    {
       name: "startDate",
       title: "Start Date",
       type: "string",

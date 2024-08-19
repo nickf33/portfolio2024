@@ -52,11 +52,6 @@ const WorkItemWrap = ({ data, workList }) => {
 
             <WorkParallax parallaxImgs={parallaxImgArray} />
 
-            <WorkItemLower
-              title={data.lowerTitle}
-              text={data.lowerText}
-              img={data.lowerImg}
-            />
             <WorkItemNav workArray={workList} slug={data.slug} />
 
             <div className="relative mt-40">

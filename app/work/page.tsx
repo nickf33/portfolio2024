@@ -1,3 +1,5 @@
+"use client";
+
 import { getWorks } from "@/cms/sanity-utils";
 import WorkWrap from "../components/work/display/WorkDisplayWrap";
 
