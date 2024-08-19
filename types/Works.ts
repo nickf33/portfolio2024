@@ -10,8 +10,7 @@ export type Work = {
   name: string;
   slug: string;
   landingImg: WorkImage;
-  tech: string;
-  role: string;
+  tech: string[];
   credits: string;
   projectOverview: string;
   missionObjective: string;

@@ -11,10 +11,35 @@ import { IoIosArrowRoundBack } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 
 const WorkItemWrap = ({ data, workList }) => {
+  console.log("List" + workList);
+  const {
+    category: { value: categoryValue, btnText },
+    challenges,
+    conclusion,
+    credits,
+    landingImg,
+    link,
+    lowerImg,
+    missionObjective,
+    name,
+    parallaxOne,
+    parallaxTwo,
+    projectOverview,
+    role,
+    slug,
+    tech,
+  } = data;
+
+  // Creating arrays for parallax images and other image data
   const parallaxImgArray = [
-    { url: data.parallaxOne.url, alt: data.parallaxOne.alt },
-    { url: data.parallaxTwo.url, alt: data.parallaxTwo.alt },
+    { url: parallaxOne.url, alt: parallaxOne.alt },
+    { url: parallaxTwo.url, alt: parallaxTwo.alt },
   ];
+
+  const imageData = {
+    landingImg,
+    lowerImg,
+  };
   console.log(data);
   return (
     <>
@@ -45,9 +70,9 @@ const WorkItemWrap = ({ data, workList }) => {
             />
 
             <WorkItemDescription
-              description={data.description}
+              description={projectOverview}
               url={data.url}
-              snippet={data.snippet}
+              snippet={missionObjective}
             />
 
             <WorkParallax parallaxImgs={parallaxImgArray} />

@@ -36,18 +36,30 @@ export async function getWorks(): Promise<Work[]> {
     groq`*[_type == "work"]{
       _id,
       _createdAt,
-      category,
+      category{
+        value,
+        "btnText": select(
+          value == "Design" || value == "Design/Development" => "View Work",
+          value == "Development" => "Live Site",
+          "View Work"
+        )
+      },
       name,
       "slug": slug.current,
-            "landingImg": {
+      "landingImg": {
         "url": landingImg.asset->url,
         "alt": landingImg.alt,
       },
       tech,
       role,
       credits,
-      description,
-      snippet,
+      projectOverview,
+      missionObjective,
+      challenges[]{
+        challengeTitle,
+        challengeText
+      },
+      conclusion,
       "parallaxOne": {
         "url": parallaxOne.asset->url,
         "alt": parallaxOne.alt,
@@ -56,8 +68,6 @@ export async function getWorks(): Promise<Work[]> {
         "url": parallaxTwo.asset->url,
         "alt": parallaxTwo.alt,
       },
-      lowerTitle,
-      lowerText,
       "lowerImg": {
         "url": lowerImg.asset->url,
         "alt": lowerImg.alt,
@@ -70,13 +80,21 @@ export async function getWorks(): Promise<Work[]> {
     }
   );
 }
+
 // Get single project
 export async function getWork(slug: string): Promise<Work> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "work" && slug.current == $slug][0]{
       _id,
       _createdAt,
-      category,
+      category{
+        value,
+        "btnText": select(
+          value == "Design" || value == "Design/Development" => "View Work",
+          value == "Development" => "Live Site",
+          "View Work"
+        )
+      },
       name,
       "slug": slug.current,
       "landingImg": {
@@ -86,8 +104,13 @@ export async function getWork(slug: string): Promise<Work> {
       tech,
       role,
       credits,
-      description,
-      snippet,
+      projectOverview,
+      missionObjective,
+      challenges[]{
+        challengeTitle,
+        challengeText
+      },
+      conclusion,
       "parallaxOne": {
         "url": parallaxOne.asset->url,
         "alt": parallaxOne.alt,
@@ -96,8 +119,6 @@ export async function getWork(slug: string): Promise<Work> {
         "url": parallaxTwo.asset->url,
         "alt": parallaxTwo.alt,
       },
-      lowerTitle,
-      lowerText,
       "lowerImg": {
         "url": lowerImg.asset->url,
         "alt": lowerImg.alt,
@@ -110,7 +131,6 @@ export async function getWork(slug: string): Promise<Work> {
     }
   );
 }
-
 // Get Articles
 export async function getArticle(): Promise<Article> {
   return createClient(clientConfig).fetch(

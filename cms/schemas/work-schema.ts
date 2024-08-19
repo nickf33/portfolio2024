@@ -64,17 +64,8 @@ const work = {
     {
       name: "tech",
       title: "Tech Stack",
-      type: "string",
-    },
-    {
-      name: "role",
-      title: "Role",
-      type: "string",
-    },
-    {
-      name: "credits",
-      title: "Credits",
-      type: "string",
+      type: "array",
+      of: [{ type: "string" }],
     },
     {
       name: "projectOverview",
@@ -156,6 +147,11 @@ const work = {
       name: "link",
       title: "Link URL",
       type: "url",
+    },
+    {
+      name: "credits",
+      title: "Credits",
+      type: "string",
     },
   ],
 };
