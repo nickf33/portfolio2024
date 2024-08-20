@@ -13,12 +13,24 @@ const Template = ({ data, category, index }) => {
     setIsOpen(!isOpen);
   };
 
+  const {
+    brief,
+    endDate,
+    listItems,
+    listTitle,
+    order,
+    startDate,
+    subTitle,
+    title,
+  } = data;
+
   return (
     <motion.div
       className="relative flex mt-8 tablet:flex-col tablet:mt-4"
       initial={{ y: 50, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       viewport={{ once: true }}
+      transition={{ stiffness: 100 }}
     >
       <div className="flex justify-end w-32 tablet:w-full tablet:justify-start">
         <h2
@@ -33,12 +45,13 @@ const Template = ({ data, category, index }) => {
       {/* Details Start */}
       <div className="relative w-full group">
         <div className="" onClick={accordionToggle}>
-          <h2 className="text-lg tablet:text-xl">{data.title}</h2>
-          <h3 className="text-sm my-1 tablet:text-base">{data.subTitle}</h3>
+          <h2 className="text-lg tablet:text-xl">{title}</h2>
+          <h3 className="font-mont text-xs my-1 tablet:text-base">
+            {subTitle}
+          </h3>
           <p className="text-2xs font-semibold ml-auto">
-            {data.startDate}{" "}
-            <span className={data.startDate ? "mx-1" : "hidden"}> ━ </span>{" "}
-            {data.endDate}
+            {startDate}{" "}
+            <span className={startDate ? "mx-1" : "hidden"}> ━ </span> {endDate}
           </p>
           <p className="text-2xs mt-2 text-white-dark hover:bg-gradient-green underline hover:text-transparent hover:bg-clip-text inline-block">
             {!isOpen ? "Open Details" : "Close Details"}
@@ -54,20 +67,18 @@ const Template = ({ data, category, index }) => {
             isOpen ? "h-auto opacity-100" : "h-0 opacity-0"
           }`}
         >
-          <p className="text-2xs mt-4 tablet:text-xs">{data.brief}</p>
+          <p className="text-2xs mt-4 tablet:text-xs">{brief}</p>
 
           {/* List Start */}
-          <p className="text-2xs font-bold mt-4 tablet:text-xs">
-            {data.listTitle}
-          </p>
+          <p className="text-2xs font-bold mt-4 tablet:text-xs">{listTitle}</p>
 
-          <ul className="w-4/5 my-4 ml-2">
-            {data.listItems && data.listItems.length > 0 && (
+          <ul className="w-full my-4 pl-2">
+            {listItems && listItems.length > 0 && (
               <>
-                {data.listItems.map((listItem: any, i: number) => (
+                {listItems.map((listItem: any, i: number) => (
                   <li
                     key={i}
-                    className="text-2xs ml-2 my-1 before:content-['-'] before:mr-1 tablet:text-xs"
+                    className="text-2xs ml-2 my-2 before:content-['○'] before:mr-2 tablet:text-xs"
                   >
                     {listItem.item}
                   </li>

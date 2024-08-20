@@ -8,6 +8,9 @@ import Interests from "./Interests";
 import { motion, AnimatePresence } from "framer-motion";
 import ProgressBar from "../ui/ProgressBar";
 
+const downloadLink =
+  "https://drive.google.com/file/d/1MS_0vqQFtNE0vXlmvEgbYmA6xx8wsZLx/view?usp=sharing";
+
 const AboutWrap = ({
   aboutData,
   skillsData,
@@ -37,13 +40,13 @@ const AboutWrap = ({
           <h2 className="text-base tablet:text-2xl">Career Summary</h2>
 
           <Button
-            link="resume.pdf"
+            link={downloadLink}
             additionalClass="my-4 tablet:pt-0 lgMobile:pt-0"
             label="Download Icon"
           >
             <IoMdDownload className="text-xl lgMobile:text-2xl" />
           </Button>
-          <div className="max-w-[900px] pt-8 ml-auto">
+          <div className="max-w-[920px] pt-8 ml-auto">
             <Education educationData={educationData} />
             <WorkHistory workHistoryData={workHistoryData} />
             <Interests interestsData={interestsData} />

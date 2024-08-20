@@ -34,7 +34,11 @@ export default function WorkParallax({ parallaxImgs }) {
   }, [switchWidth]);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ stiffness: 10, damping: 12 }}
       ref={container}
       className="flex mt-32 mr-10 w-full tablet:flex-col tablet:mt-16"
     >
@@ -95,6 +99,6 @@ export default function WorkParallax({ parallaxImgs }) {
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 }

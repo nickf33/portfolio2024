@@ -39,7 +39,8 @@ const resume = {
             {
               name: "item",
               title: "Item",
-              type: "string",
+              type: "array",
+              of: [{ type: "block" }],
             },
           ],
         },

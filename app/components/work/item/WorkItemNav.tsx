@@ -14,19 +14,19 @@ export default function WorkNav({ workArray, slug }) {
       <div className="relative flex justify-between w-full text-2xl my-4">
         {prevObject && (
           <div
-            className="previous absolute left link hover:underline"
+            className="link previous absolute left link hover:underline"
             onClick={() => router.push(`/work/${prevObject.slug}`)}
           >
-            Previous
+            Previous Project
           </div>
         )}
 
         {nextObject && (
           <div
-            className="next absolute right-0 link hover:underline"
+            className="link next absolute right-0 link hover:underline"
             onClick={() => router.push(`/work/${nextObject.slug}`)}
           >
-            Next
+            Next Project
           </div>
         )}
       </div>
