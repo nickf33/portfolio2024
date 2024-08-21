@@ -90,8 +90,8 @@ const WorkItemWrap = ({ data, workList }) => {
                   Contact
                 </Button>
                 <p className="text-2xs text-white-dark font-medium my-8 max-w-[22rem] tablet:text-xs">
-                  Whether you've got a project in mind or just want to discuss
-                  web development, I'm here for it.
+                  Whether you have an opportuinty you would like to discuss or a
+                  project in mind for development, please get in touch!
                 </p>
               </div>
               <div className=""></div>
