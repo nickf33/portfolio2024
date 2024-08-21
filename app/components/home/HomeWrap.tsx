@@ -49,7 +49,7 @@ export default function HomeWrap() {
               <ExternalLink text="Open University" link="https://open.ac.uk" />{" "}
               graduate with first class honours in web technologies, design and
               development. Take a look at some of my{" "}
-              <InternalLink text="work" link="work" /> or view my{" "}
+              <InternalLink text="projects" link="projects" /> or view my{" "}
               <InternalLink text="C.V." link="about" />
             </p>
 
