@@ -1,14 +1,14 @@
-import { getWork, getWorks } from "@/cms/sanity-utils";
-import WorkItemWrap from "@/app/components/projects/item/WorkItemWrap";
+import { getProject, getProjects } from "@/cms/sanity-utils";
+import WorkItemWrap from "@/app/components/projects/item/ProjectItemWrap";
 
 export default async function WorkPage({ params }) {
   const slug = params.work;
-  const workItem = await getWork(slug);
-  const allWork = await getWorks();
+  const projectItem = await getProject(slug);
+  const allProjects = await getProjects();
 
   return (
     <>
-      <WorkItemWrap data={workItem} workList={allWork}></WorkItemWrap>
+      <WorkItemWrap data={projectItem} projectList={allProjects}></WorkItemWrap>
     </>
   );
 }

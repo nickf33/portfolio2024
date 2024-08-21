@@ -1,13 +1,13 @@
 "use client";
 
-import WorkItemImg from "./WorkItemImg";
-import WorkParallax from "./WorkItemParallax";
-import WorkItemNav from "./WorkItemNav";
+import ProjectItemImg from "./ProjectItemImg";
+import ProjectParallax from "./ProjectItemParallax";
+import ProjectItemNav from "./ProjectItemNav";
 import Button from "@/app/components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import MagneticWrap from "../../ui/MagneticWrap";
 
-const WorkItemWrap = ({ data, workList }) => {
+const ProjectItemWrap = ({ data, projectList }) => {
   const { value, btnText } = data.category;
 
   const {
@@ -47,7 +47,7 @@ const WorkItemWrap = ({ data, workList }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ type: "tween", duration: 1 }}
-            id="work"
+            id="project"
             className="relative items-center w-full min-h-screen pt-[20vh] pb-32"
           >
             <div className="w-4/5 mx-auto max-w-custom">
@@ -63,21 +63,21 @@ const WorkItemWrap = ({ data, workList }) => {
                 Credit: {credits}
               </motion.p>
 
-              <WorkItemImg img={landingImg} />
+              <ProjectItemImg img={landingImg} />
               <TechButtons tech={tech} />
               <OverviewText projectOverview={projectOverview} />
               <Button link={link} label={value}>
                 {btnText}
               </Button>
               <ObjectiveText missionObjective={missionObjective} />
-              <WorkParallax parallaxImgs={parallaxImgArray} />
+              <ProjectParallax parallaxImgs={parallaxImgArray} />
 
               <ChallengesList challengeArray={challenges} />
-              <WorkItemImg img={lowerImg} />
+              <ProjectItemImg img={lowerImg} />
 
               <ConclusionText conclusion={conclusion} />
 
-              <WorkItemNav workArray={workList} slug={slug} />
+              <ProjectItemNav projectArray={projectList} slug={slug} />
 
               <div className="relative mt-40">
                 <h1 className="text-xl">Let&apos;s Talk</h1>
@@ -255,4 +255,4 @@ const ConclusionText = ({ conclusion }: { conclusion: string }) => {
   );
 };
 
-export default WorkItemWrap;
+export default ProjectItemWrap;

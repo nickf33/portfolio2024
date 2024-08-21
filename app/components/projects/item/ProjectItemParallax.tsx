@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-export default function WorkParallax({ parallaxImgs }) {
+export default function ProjectImgParallax({ parallaxImgs }) {
   // Parallax Scroll
   const imgOne = parallaxImgs[0];
   const imgTwo = parallaxImgs[1];
