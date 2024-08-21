@@ -3,7 +3,7 @@
 import ProjectItemImg from "./ProjectItemImg";
 import ProjectParallax from "./ProjectItemParallax";
 import ProjectItemNav from "./ProjectItemNav";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/_components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 import MagneticWrap from "../../ui/MagneticWrap";
 
@@ -11,6 +11,7 @@ const ProjectItemWrap = ({ data, projectList }) => {
   const { value, btnText } = data.category;
 
   const {
+    category,
     challenges,
     conclusion,
     credits,
@@ -36,6 +37,8 @@ const ProjectItemWrap = ({ data, projectList }) => {
     landingImg,
     lowerImg,
   };
+
+  console.log(category);
 
   return (
     <>
@@ -67,7 +70,7 @@ const ProjectItemWrap = ({ data, projectList }) => {
               <TechButtons tech={tech} />
               <OverviewText projectOverview={projectOverview} />
               <Button link={link} label={value}>
-                {btnText}
+                Live Site
               </Button>
               <ObjectiveText missionObjective={missionObjective} />
               <ProjectParallax parallaxImgs={parallaxImgArray} />
@@ -121,7 +124,7 @@ const TechButtons = ({ tech }: { tech: string[] }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       {tech.map((item, index) => (
         <MagneticWrap key={item + index}>
@@ -229,6 +232,9 @@ const ChallengesList = ({
           key={index}
           className="mb-4 max-w-[26rem]"
           variants={itemVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
         >
           <h3 className="font-semibold mb-2">{challenge.challengeTitle}</h3>
           <p className="text-2xs">{challenge.challengeText}</p>

@@ -1,5 +1,5 @@
 "use client";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/_components/ui/Button";
 import { IoMdDownload } from "react-icons/io";
 import Education from "./Education";
 import WorkHistory from "./WorkHistory";

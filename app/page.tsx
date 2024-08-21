@@ -1,4 +1,4 @@
-import HomeWrap from "./components/home/HomeWrap";
+import HomeWrap from "./_components/home/HomeWrap";
 
 const Home = () => {
   return <HomeWrap />;

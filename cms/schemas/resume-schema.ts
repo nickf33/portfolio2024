@@ -37,10 +37,14 @@ const resume = {
           type: "object",
           fields: [
             {
-              name: "item",
-              title: "Item",
-              type: "array",
-              of: [{ type: "block" }],
+              name: "itemTitle",
+              title: "Item Title",
+              type: "string",
+            },
+            {
+              name: "itemDescription",
+              title: "Item Description",
+              type: "string",
             },
           ],
         },

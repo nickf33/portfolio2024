@@ -41,7 +41,7 @@ const education = {
       ],
     },
     {
-      name: "SkillslistTitle",
+      name: "skillsListTitle",
       title: "Skills List Title",
       type: "string",
     },

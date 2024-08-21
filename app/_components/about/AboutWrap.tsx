@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/_components/ui/Button";
 import { IoMdDownload } from "react-icons/io";
 import Education from "./Education";
 import WorkHistory from "./WorkHistory";
@@ -32,11 +32,11 @@ const AboutWrap = ({
       >
         <div className="w-4/5 mx-auto max-w-custom">
           <Intro aboutData={aboutData} downloadLink={downloadLink} />
-          <div className="mt-12 w-full grid grid-cols-3 tablet:grid-cols-1">
+          <div className="mt-20 w-full grid grid-cols-3 tablet:grid-cols-1">
             <div className="w-full h-full col-span-1 pr-8 tablet:hidden">
               <AboutNav />
             </div>
-            <div className="w-full h-full col-span-2 pl-8 tablet:col-span-3">
+            <div className="w-full h-full col-span-2 pl-8 mt-2 tablet:col-span-3">
               <AboutSections
                 educationData={educationData}
                 workHistoryData={workHistoryData}
@@ -49,13 +49,13 @@ const AboutWrap = ({
         </div>
 
         <div className="w-4/5 mx-auto max-w-custom mt-20">
-          <h1 className="text-2xl">What I have worked on</h1>
+          <h1 className="tablet:text-2xl">What I have worked on</h1>
 
-          <Button link="work" label="work button" additionalClass="my-8">
+          <Button link="work" label="work button" additionalClass="my-4">
             My Work
           </Button>
 
-          <p className="text-2xs text-white-dark font-medium mt-16 max-w-[22rem] tablet:text-xs tablet:mt-16">
+          <p className="text-2xs text-white-dark font-medium mt-8 max-w-[22rem] tablet:text-xs tablet:mt-16">
             Since graduating from the Open University, I have worked on some
             personal projects to bridge gaps in my knowledge and upgrade my
             stack to include React and Next.js. Check out some of the projects I
@@ -92,7 +92,7 @@ const Intro = ({
         {statement}
       </p>
 
-      <h2 className="text-base tablet:text-2xl">Career Summary</h2>
+      <h2 className="text-base tablet:text-2xl mt-12">Career Summary</h2>
       <Button
         link={downloadLink}
         additionalClass="my-4 tablet:pt-0 lgMobile:pt-0"
@@ -118,7 +118,7 @@ const AboutNav = () => {
         {navItems.map((item, index) => (
           <div
             key={index + item.text}
-            className="border-b-2 border-white-dark py-3 flex items-center"
+            className="border-b border-white-dark py-3 flex items-center"
           >
             <p className="text-sm font-bebas">{item.text}</p>
           </div>

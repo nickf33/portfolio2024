@@ -5,7 +5,7 @@ import {
   getEducation,
   getResume,
 } from "@/cms/sanity-utils";
-import AboutWrap from "../components/about/AboutWrap";
+import AboutWrap from "../_components/about/AboutWrap";
 
 export default async function About() {
   const aboutData = await getAbout();

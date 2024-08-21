@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FilterButton from "@/app/components/projects/display/FilterButton";
+import FilterButton from "@/app/_components/projects/display/FilterButton";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
 interface ProjectItemProps {
@@ -55,7 +55,6 @@ export default function ProjectsDisplay({
     { text: "all", category: "all" },
     { text: "design", category: "Design" },
     { text: "dev", category: "Development" },
-    { text: "design/dev", category: "Design/Development" },
   ];
 
   const handleCategoryClick = (category: string) => {

@@ -1,9 +1,8 @@
 "use client";
-import WorkDisplay from "./ProjectsDisplay";
+import ProjectDisplay from "./ProjectsDisplay";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ProjectsWrap = ({ projectsData }) => {
-  console.log(projectsData);
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -23,7 +22,7 @@ const ProjectsWrap = ({ projectsData }) => {
             creative experiments. Each one reflects my approach to design and
             development, focused on solving problems and exploring new ideas.
           </p>
-          {/* <WorkDisplay projectsData={projectsData} /> */}
+          <ProjectDisplay projectsData={projectsData} />
         </div>
       </motion.div>
     </AnimatePresence>

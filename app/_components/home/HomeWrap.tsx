@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Button from "@/app/components/ui/Button";
+import Button from "@/app/_components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
 
 const ExternalLink = ({ text, link }: { text: string; link: string }) => {

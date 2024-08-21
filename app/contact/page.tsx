@@ -1,4 +1,4 @@
-import ContactWrap from "@/app/components/contact/ContactWrap";
+import ContactWrap from "@/app/_components/contact/ContactWrap";
 import { getAbout } from "@/cms/sanity-utils";
 
 const data = {
