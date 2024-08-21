@@ -2,12 +2,12 @@
 
 import { useRouter } from "next/navigation";
 
-export default function WorkNav({ workArray, slug }) {
+export default function ProjectNav({ projectArray, slug }) {
   const router = useRouter();
 
-  const currentIndex = workArray.findIndex((item) => item.slug === slug);
-  const prevObject = workArray[currentIndex - 1];
-  const nextObject = workArray[currentIndex + 1];
+  const currentIndex = projectArray.findIndex((item) => item.slug === slug);
+  const prevObject = projectArray[currentIndex - 1];
+  const nextObject = projectArray[currentIndex + 1];
 
   return (
     <>

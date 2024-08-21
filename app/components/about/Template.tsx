@@ -16,8 +16,6 @@ const Template = ({ data, category, index }) => {
     title,
   } = data;
 
-  console.log(data);
-
   return (
     <>
       <div className="border-2 w-full h-40">

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState, useRef, useEffect } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-export default function WorkItemImg({ img }) {
+export default function ProjectItemImg({ img }) {
   const container = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
   const switchWidth = 767;
