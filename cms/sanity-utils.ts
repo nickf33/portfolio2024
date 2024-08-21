@@ -9,6 +9,28 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 
 // Get about section
+export async function getAbout(): Promise<About> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "about"][0]{
+      _id,
+      _createdAt,
+      title,
+      statement,
+      "mainImg": {
+        "url": mainImg.asset->url,
+        "alt": mainImg.alt,
+      },
+      closingTitle,
+      closingStatement,
+    }
+`,
+    {},
+    {
+      next: { revalidate: 3600 },
+    }
+  );
+}
+
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "project"]{
@@ -28,7 +50,11 @@ export async function getProjects(): Promise<Project[]> {
       lowerImg,
       link,
       credits
-    }`
+    }`,
+    {},
+    {
+      next: { revalidate: 60 }, // Revalidate every minute
+    }
   );
 }
 
@@ -52,9 +78,13 @@ export async function getProject(slug: string): Promise<Project> {
       link,
       credits
     }`,
-    { slug }
+    { slug },
+    {
+      cache: "no-store",
+    }
   );
 }
+
 // Get Articles
 export async function getArticle(): Promise<Article> {
   return createClient(clientConfig).fetch(
@@ -110,8 +140,8 @@ export async function getEducation(): Promise<Education> {
       brief,
       modulesListtitle,
       modulesListItems,
-      skillsListtitle,
-      skillsListItems,
+           modulesListtitle,
+      modulesListItems,
       closing,
       startDate,
       endDate,
