@@ -1,5 +1,5 @@
 import { About } from "../types/About";
-import { Work } from "../types/Works";
+import { Project } from "../types/Project";
 import { Article } from "../types/Article";
 import { Resume } from "../types/Resume";
 import { Education } from "../types/Education";
@@ -30,48 +30,26 @@ export async function getAbout(): Promise<About> {
     }
   );
 }
-// Get all projects
-export async function getWorks(): Promise<Work[]> {
+
+export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "work"]{
+    groq`*[_type == "project"]{
       _id,
       _createdAt,
-      category{
-        value,
-        "btnText": select(
-          value == "Design" || value == "Design/Development" => "View Work",
-          value == "Development" => "Live Site",
-          "View Work"
-        )
-      },
+      category,
       name,
       "slug": slug.current,
-      "landingImg": {
-        "url": landingImg.asset->url,
-        "alt": landingImg.alt,
-      },
+      landingImg,
       tech,
-      credits,
       projectOverview,
       missionObjective,
-      challenges[]{
-        challengeTitle,
-        challengeText
-      },
+      challenges,
       conclusion,
-      "parallaxOne": {
-        "url": parallaxOne.asset->url,
-        "alt": parallaxOne.alt,
-      },
-      "parallaxTwo": {
-        "url": parallaxTwo.asset->url,
-        "alt": parallaxTwo.alt,
-      },
-      "lowerImg": {
-        "url": lowerImg.asset->url,
-        "alt": lowerImg.alt,
-      },
+      parallaxOne,
+      parallaxTwo,
+      lowerImg,
       link,
+      credits
     }`,
     {},
     {
@@ -80,48 +58,25 @@ export async function getWorks(): Promise<Work[]> {
   );
 }
 
-// Get single project
-export async function getWork(slug: string): Promise<Work> {
+export async function getProject(slug: string): Promise<Project> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "work" && slug.current == $slug][0]{
+    groq`*[_type == "project" && slug.current == $slug][0]{
       _id,
       _createdAt,
-      category{
-        value,
-        "btnText": select(
-          value == "Design" || value == "Design/Development" => "View Work",
-          value == "Development" => "Live Site",
-          "View Work"
-        )
-      },
+      category,
       name,
       "slug": slug.current,
-      "landingImg": {
-        "url": landingImg.asset->url,
-        "alt": landingImg.alt,
-      },
+      landingImg,
       tech,
-      credits,
       projectOverview,
       missionObjective,
-      challenges[]{
-        challengeTitle,
-        challengeText
-      },
+      challenges,
       conclusion,
-      "parallaxOne": {
-        "url": parallaxOne.asset->url,
-        "alt": parallaxOne.alt,
-      },
-      "parallaxTwo": {
-        "url": parallaxTwo.asset->url,
-        "alt": parallaxTwo.alt,
-      },
-      "lowerImg": {
-        "url": lowerImg.asset->url,
-        "alt": lowerImg.alt,
-      },
+      parallaxOne,
+      parallaxTwo,
+      lowerImg,
       link,
+      credits
     }`,
     { slug },
     {
@@ -129,6 +84,7 @@ export async function getWork(slug: string): Promise<Work> {
     }
   );
 }
+
 // Get Articles
 export async function getArticle(): Promise<Article> {
   return createClient(clientConfig).fetch(
@@ -184,8 +140,8 @@ export async function getEducation(): Promise<Education> {
       brief,
       modulesListtitle,
       modulesListItems,
-      skillsListtitle,
-      skillsListItems,
+           modulesListtitle,
+      modulesListItems,
       closing,
       startDate,
       endDate,

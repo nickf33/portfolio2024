@@ -1,5 +1,5 @@
 import { getWork, getWorks } from "@/cms/sanity-utils";
-import WorkItemWrap from "@/app/components/work/item/WorkItemWrap";
+import WorkItemWrap from "@/app/components/projects/item/WorkItemWrap";
 
 export default async function WorkPage({ params }) {
   const slug = params.work;
