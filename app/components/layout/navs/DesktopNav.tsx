@@ -9,7 +9,7 @@ import MagneticWrap from "../../ui/MagneticWrap";
 
 const links = [
   { linkText: "about", url: "about" },
-  { linkText: "work", url: "work" },
+  { linkText: "projects", url: "projects" },
   { linkText: "contact", url: "contact" },
 ];
 

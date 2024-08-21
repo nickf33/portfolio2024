@@ -17,7 +17,7 @@ import Footer from "../Footer";
 const navLinks = [
   { title: "Home", link: "/" },
   { title: "About", link: "/about" },
-  { title: "Work", link: "/work" },
+  { title: "Projects", link: "/projects" },
   { title: "Contact", link: "/contact" },
 ];
 
