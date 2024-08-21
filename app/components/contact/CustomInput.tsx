@@ -7,7 +7,7 @@ const CustomInput = ({ height, error, touched, ...props }) => {
       className={`relative flex items-center border-b w-full border-white-dark ${height}`}
     >
       <div
-        className={`p-1 text-[0.5rem] rounded-full border mt-[-0.25rem] font-bold transition origin-left duration-300 ${
+        className={`p-1 text-[0.5rem] rounded-full border mt-[-0.25rem] ml-6 font-bold transition origin-left duration-300 ${
           touched
             ? error
               ? "scale-125 bg-gradient-red text-white-dark border-0"

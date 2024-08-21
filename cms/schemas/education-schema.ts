@@ -19,13 +19,35 @@ const education = {
       type: "string",
     },
     {
-      name: "listTitle",
-      title: "List Title",
+      name: "modulesListTitle",
+      title: "Modules List Title",
       type: "string",
     },
     {
-      name: "listItems",
-      title: "List Items",
+      name: "modules",
+      title: "Modules",
+      type: "array",
+      of: [
+        {
+          type: "object",
+          fields: [
+            {
+              name: "item",
+              title: "Item",
+              type: "string",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      name: "SkillslistTitle",
+      title: "Skills List Title",
+      type: "string",
+    },
+    {
+      name: "skills",
+      title: "Skills",
       type: "array",
       of: [
         {

@@ -4,6 +4,8 @@ import ContactDetails from "./ContactDetails";
 import { motion, AnimatePresence } from "framer-motion";
 
 const ContactWrap = ({ data, img }) => {
+  const { title, text } = data;
+
   return (
     <>
       <AnimatePresence mode="wait">
@@ -17,11 +19,11 @@ const ContactWrap = ({ data, img }) => {
         >
           <div className="relative w-4/5 mx-auto max-w-custom">
             <div className="flex">
-              <div className="grid grid-cols-2 tablet:grid-cols-1">
+              <div className="w-full grid grid-cols-2 tablet:grid-cols-1">
                 <div className="w-full tablet:max-w-[20rem]">
-                  <h1 className="text-2xl">{data.title}</h1>
+                  <h1 className="text-2xl">{title}</h1>
                   <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
-                  <p className="text-2xs mt-8 tablet:text-xs">{data.text}</p>
+                  <p className="text-2xs mt-8 tablet:text-xs">{text}</p>
                 </div>
                 <ContactDetails img={img} />
               </div>

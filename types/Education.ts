@@ -4,8 +4,10 @@ export type Education = {
   title: string;
   subTitle: string;
   brief: string;
-  listTitle?: string | null;
-  listItems?: { item: string }[];
+  modulesListTitle?: string | null;
+  modulesListItems?: { item: string }[];
+  skillsListTitle?: string | null;
+  skillsListItems?: { item: string }[];
   closing: string;
   startDate: string;
   endDate: string;

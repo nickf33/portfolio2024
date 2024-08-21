@@ -1,16 +1,11 @@
 "use client";
 
 import WorkItemImg from "./WorkItemImg";
-import WorkItemSpec from "./WorkItemSpec";
-import WorkItemDescription from "./WorkItemDescription";
 import WorkParallax from "./WorkItemParallax";
-import WorkItemLower from "./WorkItemLower";
 import WorkItemNav from "./WorkItemNav";
 import Button from "@/app/components/ui/Button";
-import { IoIosArrowRoundBack } from "react-icons/io";
 import { AnimatePresence, motion } from "framer-motion";
 import MagneticWrap from "../../ui/MagneticWrap";
-import { viewport } from "@/app/layout";
 
 const WorkItemWrap = ({ data, workList }) => {
   const { value, btnText } = data.category;

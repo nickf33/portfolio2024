@@ -3,7 +3,7 @@ import { getAbout } from "@/cms/sanity-utils";
 
 const data = {
   title: "Let's Talk",
-  text: "I am currently looking for opportunities post graduation and be keen to hear from potential employers and recruiters. ",
+  text: "Whether you have an opportuinty you would like to discuss or a project in mind for development, please get in touch!",
 };
 
 export default async function Contact() {

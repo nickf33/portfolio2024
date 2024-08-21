@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FilterButton from "@/app/components/work/display/FilterButton";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import MagneticWrap from "../../ui/MagneticWrap";
 
 interface WorkItem {
   _id: string;
@@ -115,11 +114,9 @@ export default function WorkDisplay({ workData }) {
               >
                 <div className="relative m-0 tablet:w-full">
                   <div className="flex items-center">
-                    <MagneticWrap>
-                      <div className="p-2 rounded-full border mt-[-0.25rem] text-white-dark font-bold mr-2 scale-50 transition duration-300 group-hover:scale-75 group-hover:bg-gradient-green group-hover:text-blue-dark group-hover:border-0 tablet:hidden">
-                        <IoIosArrowRoundForward />
-                      </div>
-                    </MagneticWrap>
+                    <div className="p-2 rounded-full border mt-[-0.25rem] text-white-dark font-bold mr-2 scale-50 transition duration-300 group-hover:scale-75 group-hover:bg-gradient-green group-hover:text-blue-dark group-hover:border-0 tablet:hidden">
+                      <IoIosArrowRoundForward />
+                    </div>
 
                     <h2 className="relative text-xl opacity-60 transition duration-300 origin-left group-hover:scale-150 group-hover:opacity-100 tablet:opacity-100 tablet:group-hover:scale-100 tablet:text-2xl tablet:mb-4">
                       {item.name}
@@ -128,7 +125,7 @@ export default function WorkDisplay({ workData }) {
 
                   <div className="overflow-hidden ml-12 tablet:ml-0">
                     <p className="text-2xs translate-y-full group-hover:translate-y-0 transition ease-out duration-300 tablet:translate-y-0 tablet:text-xs">
-                      {item.role}
+                      {item.category.value}
                     </p>
                   </div>
                 </div>
