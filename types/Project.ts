@@ -1,15 +1,15 @@
-export type WorkImage = {
+export type ProjectImage = {
   url: string;
   alt: string;
 };
 
-export type Work = {
+export type Project = {
   _id: string;
   _createdAt: string;
   category: { value: string };
   name: string;
   slug: string;
-  landingImg: WorkImage;
+  landingImg: ProjectImage;
   tech: string[];
   credits: string;
   projectOverview: string;
@@ -19,8 +19,8 @@ export type Work = {
     challengeText: string;
   }[];
   conclusion: string;
-  parallaxOne: WorkImage;
-  parallaxTwo: WorkImage;
-  lowerImg: WorkImage;
+  parallaxOne: ProjectImage;
+  parallaxTwo: ProjectImage;
+  lowerImg: ProjectImage;
   link: string;
 };

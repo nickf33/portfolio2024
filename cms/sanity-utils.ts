@@ -1,5 +1,5 @@
 import { About } from "../types/About";
-import { Work } from "../types/Works";
+import { Project } from "../types/Project";
 import { Article } from "../types/Article";
 import { Resume } from "../types/Resume";
 import { Education } from "../types/Education";
@@ -9,124 +9,50 @@ import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
 
 // Get about section
-export async function getAbout(): Promise<About> {
+export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "about"][0]{
+    groq`*[_type == "project"]{
       _id,
       _createdAt,
-      title,
-      statement,
-      "mainImg": {
-        "url": mainImg.asset->url,
-        "alt": mainImg.alt,
-      },
-      closingTitle,
-      closingStatement,
-    }
-`,
-    {},
-    {
-      next: { revalidate: 3600 },
-    }
-  );
-}
-// Get all projects
-export async function getWorks(): Promise<Work[]> {
-  return createClient(clientConfig).fetch(
-    groq`*[_type == "work"]{
-      _id,
-      _createdAt,
-      category{
-        value,
-        "btnText": select(
-          value == "Design" || value == "Design/Development" => "View Work",
-          value == "Development" => "Live Site",
-          "View Work"
-        )
-      },
+      category,
       name,
       "slug": slug.current,
-      "landingImg": {
-        "url": landingImg.asset->url,
-        "alt": landingImg.alt,
-      },
+      landingImg,
       tech,
-      credits,
       projectOverview,
       missionObjective,
-      challenges[]{
-        challengeTitle,
-        challengeText
-      },
+      challenges,
       conclusion,
-      "parallaxOne": {
-        "url": parallaxOne.asset->url,
-        "alt": parallaxOne.alt,
-      },
-      "parallaxTwo": {
-        "url": parallaxTwo.asset->url,
-        "alt": parallaxTwo.alt,
-      },
-      "lowerImg": {
-        "url": lowerImg.asset->url,
-        "alt": lowerImg.alt,
-      },
+      parallaxOne,
+      parallaxTwo,
+      lowerImg,
       link,
-    }`,
-    {},
-    {
-      next: { revalidate: 60 }, // Revalidate every minute
-    }
+      credits
+    }`
   );
 }
 
-// Get single project
-export async function getWork(slug: string): Promise<Work> {
+export async function getProject(slug: string): Promise<Project> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "work" && slug.current == $slug][0]{
+    groq`*[_type == "project" && slug.current == $slug][0]{
       _id,
       _createdAt,
-      category{
-        value,
-        "btnText": select(
-          value == "Design" || value == "Design/Development" => "View Work",
-          value == "Development" => "Live Site",
-          "View Work"
-        )
-      },
+      category,
       name,
       "slug": slug.current,
-      "landingImg": {
-        "url": landingImg.asset->url,
-        "alt": landingImg.alt,
-      },
+      landingImg,
       tech,
-      credits,
       projectOverview,
       missionObjective,
-      challenges[]{
-        challengeTitle,
-        challengeText
-      },
+      challenges,
       conclusion,
-      "parallaxOne": {
-        "url": parallaxOne.asset->url,
-        "alt": parallaxOne.alt,
-      },
-      "parallaxTwo": {
-        "url": parallaxTwo.asset->url,
-        "alt": parallaxTwo.alt,
-      },
-      "lowerImg": {
-        "url": lowerImg.asset->url,
-        "alt": lowerImg.alt,
-      },
+      parallaxOne,
+      parallaxTwo,
+      lowerImg,
       link,
+      credits
     }`,
-    { slug },
-    {
-      cache: "no-store",
-    }
+    { slug }
   );
 }
 // Get Articles

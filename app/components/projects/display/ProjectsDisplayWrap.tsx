@@ -1,9 +1,9 @@
 "use client";
-import WorkDisplay from "./WorkDisplay";
+import WorkDisplay from "./ProjectsDisplay";
 import { motion, AnimatePresence } from "framer-motion";
-import ProgressBar from "../../ui/ProgressBar";
 
-const WorkWrap = ({ workData }) => {
+const ProjectsWrap = ({ projectsData }) => {
+  console.log(projectsData);
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -23,11 +23,11 @@ const WorkWrap = ({ workData }) => {
             creative experiments. Each one reflects my approach to design and
             development, focused on solving problems and exploring new ideas.
           </p>
-          <WorkDisplay workData={workData} />
+          {/* <WorkDisplay projectsData={projectsData} /> */}
         </div>
       </motion.div>
     </AnimatePresence>
   );
 };
 
-export default WorkWrap;
+export default ProjectsWrap;

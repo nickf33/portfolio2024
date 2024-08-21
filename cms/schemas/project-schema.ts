@@ -1,6 +1,6 @@
-const work = {
-  name: "work",
-  title: "Work",
+const project = {
+  name: "project",
+  title: "Project",
   type: "document",
   fields: [
     {
@@ -17,7 +17,7 @@ const work = {
               {
                 title: "Design",
                 value: "Design",
-                btnText: "View Work",
+                btnText: "View Project",
               },
               {
                 title: "Development",
@@ -27,14 +27,14 @@ const work = {
               {
                 title: "Design/Development",
                 value: "Design/Development",
-                btnText: "View Work",
+                btnText: "View Project",
               },
             ],
           },
         },
       ],
       initialValue: {
-        value: "Work",
+        value: "Project",
       },
     },
     {
@@ -70,17 +70,17 @@ const work = {
     {
       name: "projectOverview",
       title: "Project Overview",
-      type: "text", // Text type for an in-depth overview
+      type: "text",
     },
     {
       name: "missionObjective",
       title: "Mission Objective",
-      type: "text", // Text type for the project's objective
+      type: "text",
     },
     {
       name: "challenges",
       title: "Challenges",
-      type: "array", // Dynamic array of objects to hold multiple challenges
+      type: "array",
       of: [
         {
           type: "object",
@@ -88,12 +88,12 @@ const work = {
             {
               name: "challengeTitle",
               title: "Challenge Title",
-              type: "string", // Title for each challenge
+              type: "string",
             },
             {
               name: "challengeText",
               title: "Challenge Text",
-              type: "text", // Description of the challenge and how it was overcome
+              type: "text",
             },
           ],
         },
@@ -102,7 +102,7 @@ const work = {
     {
       name: "conclusion",
       title: "Conclusion",
-      type: "text", // Text type for the project's conclusion
+      type: "text",
     },
     {
       name: "parallaxOne",
@@ -156,4 +156,4 @@ const work = {
   ],
 };
 
-export default work;
+export default project;

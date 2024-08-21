@@ -1,4 +1,4 @@
-import ProjectSchema from "./work-schema";
+import ProjectSchema from "./project-schema";
 import AboutSchema from "./about-schema";
 import ArticleSchema from "./article-schema";
 import ResumeSchema from "./resume-schema";

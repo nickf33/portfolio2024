@@ -4,37 +4,63 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import FilterButton from "@/app/components/work/display/FilterButton";
+import FilterButton from "@/app/components/projects/display/FilterButton";
 import { IoIosArrowRoundForward } from "react-icons/io";
 
-interface WorkItem {
+interface ProjectItemProps {
   _id: string;
+  _createdAt: string;
   category: {
     value: string;
+    btnText: string;
   };
-  slug: string;
   name: string;
-  role: string;
+  slug: string;
   landingImg: {
     url: string;
     alt: string;
   };
+  tech: string[];
+  projectOverview: string;
+  missionObjective: string;
+  challenges: {
+    challengeTitle: string;
+    challengeText: string;
+  }[];
+  conclusion: string;
+  parallaxOne: {
+    url: string;
+    alt: string;
+  };
+  parallaxTwo: {
+    url: string;
+    alt: string;
+  };
+  lowerImg: {
+    url: string;
+    alt: string;
+  };
+  link: string;
+  credits: string;
 }
 
-export default function WorkDisplay({ workData }) {
+export default function ProjectsDisplay({
+  projectsData,
+}: {
+  projectsData: ProjectItemProps[];
+}) {
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const filterOptions = [
     { text: "all", category: "all" },
     { text: "design", category: "Design" },
-    { text: "dev", category: "Dev" },
+    { text: "dev", category: "Development" },
+    { text: "design/dev", category: "Design/Development" },
   ];
 
   const handleCategoryClick = (category: string) => {
     setSelectedCategory(category);
   };
-
-  /* Handle cursor interaction on filter change */
 
   useEffect(() => {
     const links = document.querySelectorAll("a.link");
@@ -65,20 +91,17 @@ export default function WorkDisplay({ workData }) {
     dot?.classList.remove("hide");
   };
 
-  /* Filter Options sort */
-
-  const filteredWorkData =
+  const filteredProjectData =
     selectedCategory === "all"
-      ? workData
-      : workData.filter((item: WorkItem) =>
+      ? projectsData
+      : projectsData.filter((item: ProjectItemProps) =>
           item.category.value.includes(selectedCategory)
         );
 
   return (
     <>
-      {/* Filter buttons */}
       <div className="relative top-0 w-full flex justify-between z-50 py-4 tablet:flex-col">
-        <h2 className="text-base tablet:text-2xl">Selected Work Projects</h2>
+        <h2 className="text-base tablet:text-2xl">Selected Projects</h2>
         <div className="relative flex justify-between tablet:mt-4">
           <div className="relative flex justify-between w-full max-w-[16rem] tablet:ml-auto">
             {filterOptions.map((option, idx) => (
@@ -95,12 +118,11 @@ export default function WorkDisplay({ workData }) {
         <hr className="absolute bottom-0" />
       </div>
 
-      {/* Work Display */}
       <AnimatePresence>
         <div className="ml-auto max-w-[900px]">
-          {filteredWorkData.map((item: WorkItem, idx: number) => (
+          {filteredProjectData.map((item: ProjectItemProps, idx: number) => (
             <Link
-              href={`/work/${item.slug}`}
+              href={`/projects/${item.slug}`}
               key={item._id}
               className="link group"
             >
