@@ -4,6 +4,12 @@ const competencies = {
   type: "document",
   fields: [
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+      initialValue: "competencies",
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
