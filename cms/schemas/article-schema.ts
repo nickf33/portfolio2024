@@ -4,13 +4,6 @@ const article = {
   type: "document",
   fields: [
     {
-      name: "category",
-      title: "Category",
-      type: "string",
-      initialValue: "article",
-      readOnly: true,
-    },
-    {
       name: "name",
       title: "Name",
       type: "string",
