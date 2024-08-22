@@ -3,7 +3,7 @@ import { Project } from "../types/Project";
 import { Article } from "../types/Article";
 import { Resume } from "../types/Resume";
 import { Education } from "../types/Education";
-import { Interests } from "../types/Interests";
+import { CompetenciesProps } from "../types/Competencies";
 import { Skills } from "../types/Skills";
 import { createClient, groq } from "next-sanity";
 import clientConfig from "./config/client-config";
@@ -202,17 +202,20 @@ export async function getSkills(): Promise<Skills> {
   );
 }
 
-// Get Interests list
-export async function getInterests(): Promise<Interests> {
+// Get Competencies list
+export async function getCompetencies(): Promise<CompetenciesProps> {
   return createClient(clientConfig).fetch(
-    groq`*[_type == "interests"][0]{
+    groq`*[_type == "competencies"][0]{
       _id,
-      _createdAt,
-      category,
+      _type,
       title,
-      brief,
+      categories[]{
+        _key,
+        categoryName,
+        skills[]
+      }
     }
-`,
+  `,
     {},
     {
       next: { revalidate: 3600 },

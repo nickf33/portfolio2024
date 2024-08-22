@@ -1,7 +1,7 @@
 import {
   getAbout,
   getSkills,
-  getInterests,
+  getCompetencies,
   getEducation,
   getResume,
 } from "@/cms/sanity-utils";
@@ -10,7 +10,7 @@ import AboutWrap from "../_components/about/AboutWrap";
 export default async function About() {
   const aboutData = await getAbout();
   const skillsData = await getSkills();
-  const interestsData = await getInterests();
+  const competenciesData = await getCompetencies();
   const educationData = await getEducation();
   const resumeData = await getResume();
 
@@ -23,7 +23,7 @@ export default async function About() {
       categories={categories}
       aboutData={aboutData}
       skillsData={skillsData}
-      interestsData={interestsData}
+      competenciesData={competenciesData}
       educationData={educationData}
       resumeData={resumeData}
     />

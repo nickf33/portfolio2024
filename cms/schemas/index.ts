@@ -5,7 +5,7 @@ import ResumeSchema from "./resume-schema";
 import FormSchema from "./contact-schema";
 import EducationSchema from "./education-schema";
 import SkillsSchema from "./skills-schema";
-import InterestsSchema from "./interests-schema";
+import InterestsSchema from "./competencies-schema";
 
 const schemas = [
   ProjectSchema,

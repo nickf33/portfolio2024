@@ -6,7 +6,7 @@ import { IoMdDownload } from "react-icons/io";
 import Education from "./Education";
 import Experience from "./Experience";
 import Skills from "./Skills";
-import InterestsWrap from "./InterestsWrap";
+import InterestsWrap from "./Competencies";
 import { motion, AnimatePresence } from "framer-motion";
 import { GoDotFill } from "react-icons/go";
 import { Resume } from "@/types/Resume";
@@ -18,7 +18,7 @@ const AboutWrap = ({
   categories,
   aboutData,
   skillsData,
-  interestsData,
+  competenciesData,
   educationData,
   resumeData,
 }) => {
