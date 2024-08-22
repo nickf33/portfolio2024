@@ -8,7 +8,6 @@ const skills = {
       title: "Category",
       type: "string",
       initialValue: "skills",
-      readOnly: true,
     },
     {
       name: "title",

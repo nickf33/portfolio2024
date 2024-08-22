@@ -8,7 +8,6 @@ const resume = {
       title: "Category",
       type: "string",
       initialValue: "resume",
-      readOnly: true,
     },
     {
       name: "order",

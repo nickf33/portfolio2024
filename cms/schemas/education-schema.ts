@@ -8,7 +8,6 @@ const education = {
       title: "Category",
       type: "string",
       initialValue: "education",
-      readOnly: true,
     },
     {
       name: "title",

@@ -8,7 +8,6 @@ const about = {
       title: "Category",
       type: "string",
       initialValue: "about",
-      readOnly: true,
     },
     {
       name: "title",

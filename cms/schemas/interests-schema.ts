@@ -8,7 +8,6 @@ const interests = {
       title: "Category",
       type: "string",
       initialValue: "interests",
-      readOnly: true,
     },
     {
       name: "title",
