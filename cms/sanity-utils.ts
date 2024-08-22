@@ -14,6 +14,7 @@ export async function getAbout(): Promise<About> {
     groq`*[_type == "about"][0]{
       _id,
       _createdAt,
+      category,
       title,
       statement,
       "mainImg": {
@@ -135,8 +136,8 @@ export async function getResume(): Promise<Resume[]> {
     groq`*[_type == "resume"]{
       _id,
       _createdAt,
-      order,
       category,
+      order,
       title,
       subTitle,
       brief,

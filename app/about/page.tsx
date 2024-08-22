@@ -14,15 +14,9 @@ export default async function About() {
   const educationData = await getEducation();
   const resumeData = await getResume();
 
-  // Extract categories
-  const allData = [
-    ...(Array.isArray(educationData) ? educationData : []),
-    ...(Array.isArray(skillsData) ? skillsData : []),
-    ...(Array.isArray(interestsData) ? interestsData : []),
-    ...(Array.isArray(resumeData) ? resumeData : []),
-  ];
-
   const categories = [];
+
+  console.log(educationData);
 
   return (
     <AboutWrap
