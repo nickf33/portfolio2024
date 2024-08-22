@@ -4,7 +4,12 @@ const Education = ({ educationData }) => {
   return (
     <>
       {educationData && (
-        <Template data={educationData} category="education" index="0" />
+        <Template
+          data={educationData}
+          category="education"
+          id="education"
+          index={0}
+        />
       )}
     </>
   );

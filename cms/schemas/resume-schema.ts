@@ -4,6 +4,13 @@ const resume = {
   type: "document",
   fields: [
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+      initialValue: "resume",
+      readOnly: true,
+    },
+    {
       name: "order",
       title: "Display Order",
       type: "number",

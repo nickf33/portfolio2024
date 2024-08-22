@@ -4,6 +4,13 @@ const skills = {
   type: "document",
   fields: [
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+      initialValue: "skills",
+      readOnly: true,
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",

@@ -4,6 +4,13 @@ const about = {
   type: "document",
   fields: [
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+      initialValue: "about",
+      readOnly: true,
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",

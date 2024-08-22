@@ -1,5 +1,4 @@
 "use client";
-
 import { useRef, useState } from "react";
 import Button from "@/app/_components/ui/Button";
 import { IoMdDownload } from "react-icons/io";
@@ -9,21 +8,17 @@ import Skills from "./Skills";
 import InterestsWrap from "./InterestsWrap";
 import { motion, AnimatePresence } from "framer-motion";
 import { GoDotFill } from "react-icons/go";
-import { Resume } from "@/types/Resume";
 
 const downloadLink =
   "https://drive.google.com/file/d/1MS_0vqQFtNE0vXlmvEgbYmA6xx8wsZLx/view?usp=sharing";
 
 const AboutWrap = ({
-  categories,
   aboutData,
   skillsData,
   interestsData,
   educationData,
   resumeData,
 }) => {
-  resumeData.sort((a: Resume, b: Resume) => a.order - b.order);
-
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -32,6 +27,7 @@ const AboutWrap = ({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ type: "tween", duration: 1 }}
+        id="about"
         className="relative items-center w-full min-h-screen pt-[20vh] pb-32"
       >
         <div className="w-4/5 mx-auto max-w-custom">
@@ -40,17 +36,36 @@ const AboutWrap = ({
             <div className="w-full h-full col-span-1 pr-12 tablet:hidden">
               <AboutNav />
             </div>
-            <div className="mt-10 w-full h-full col-span-2"></div>
+            <div className="w-full h-full col-span-2 mt-2 tablet:col-span-3">
+              <AboutSections
+                educationData={educationData}
+                workHistoryData={workHistoryData}
+                interestsData={interestsData}
+              />
+            </div>
           </div>
+
+          <Skills skillsData={skillsData} />
         </div>
-        <Lower />
+
+        <div className="w-4/5 mx-auto max-w-custom mt-20">
+          <h1 className="tablet:text-2xl">What I have worked on</h1>
+
+          <Button link="work" label="work button" additionalClass="my-4">
+            My Work
+          </Button>
+
+          <p className="text-2xs text-white-dark font-medium mt-8 max-w-[22rem] tablet:text-xs tablet:mt-16">
+            Since graduating from the Open University, I have worked on some
+            personal projects to bridge gaps in my knowledge and upgrade my
+            stack to include React and Next.js. Check out some of the projects I
+            have been working on.
+          </p>
+        </div>
       </motion.div>
     </AnimatePresence>
   );
 };
-
-// Introduction and personal statement
-// Includes everything down to the first button
 
 // About DataProps
 interface AboutDataProps {
@@ -89,8 +104,6 @@ const Intro = ({
   );
 };
 
-// Navigation for resume sections
-
 const AboutNav = () => {
   const navItems = [
     { text: "Education", link: "#education" },
@@ -116,23 +129,12 @@ const AboutNav = () => {
   );
 };
 
-const Lower = () => {
+const AboutSections = ({ educationData, workHistoryData, interestsData }) => {
   return (
     <>
-      <div className="w-4/5 mx-auto max-w-custom mt-20">
-        <h1 className="tablet:text-2xl">What I have worked on</h1>
-
-        <Button link="work" label="work button" additionalClass="my-4">
-          My Work
-        </Button>
-
-        <p className="text-2xs text-white-dark font-medium mt-8 max-w-[22rem] tablet:text-xs tablet:mt-16">
-          Since graduating from the Open University, I have worked on some
-          personal projects to bridge gaps in my knowledge and upgrade my stack
-          to include React and Next.js. Check out some of the projects I have
-          been working on.
-        </p>
-      </div>
+      <Education educationData={educationData} />
+      <Experience workHistoryData={workHistoryData} />
+      <InterestsWrap interestsData={interestsData} />
     </>
   );
 };

@@ -2,9 +2,9 @@
 import Button from "@/app/_components/ui/Button";
 import { IoMdDownload } from "react-icons/io";
 import Education from "./Education";
-import WorkHistory from "./WorkHistory";
+import WorkHistory from "./Experience";
 import Skills from "./Skills";
-import Interests from "./Interests";
+import Interests from "./InterestsWrap";
 import { motion, AnimatePresence } from "framer-motion";
 import ProgressBar from "../ui/ProgressBar";
 

@@ -12,17 +12,26 @@ export default async function About() {
   const skillsData = await getSkills();
   const interestsData = await getInterests();
   const educationData = await getEducation();
-  const workHistoryData = await getResume();
+  const resumeData = await getResume();
+
+  // Extract categories
+  const allData = [
+    ...(Array.isArray(educationData) ? educationData : []),
+    ...(Array.isArray(skillsData) ? skillsData : []),
+    ...(Array.isArray(interestsData) ? interestsData : []),
+    ...(Array.isArray(resumeData) ? resumeData : []),
+  ];
+
+  const categories = [];
 
   return (
-    <>
-      <AboutWrap
-        aboutData={aboutData}
-        skillsData={skillsData}
-        interestsData={interestsData}
-        educationData={educationData}
-        workHistoryData={workHistoryData}
-      />
-    </>
+    <AboutWrap
+      categories={categories}
+      aboutData={aboutData}
+      skillsData={skillsData}
+      interestsData={interestsData}
+      educationData={educationData}
+      resumeData={resumeData}
+    />
   );
 }

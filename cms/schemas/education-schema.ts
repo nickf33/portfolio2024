@@ -4,6 +4,13 @@ const education = {
   type: "document",
   fields: [
     {
+      name: "category",
+      title: "Category",
+      type: "string",
+      initialValue: "education",
+      readOnly: true,
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
