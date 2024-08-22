@@ -16,7 +16,7 @@ export default async function About() {
 
   const categories = [];
 
-  console.log(resumeData);
+  console.log(educationData);
 
   return (
     <AboutWrap

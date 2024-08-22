@@ -160,6 +160,7 @@ export async function getEducation(): Promise<Education> {
     groq`*[_type == "education"][0]{
       _id,
       _createdAt,
+      category,
       title,
       subTitle,
       brief,
@@ -185,6 +186,7 @@ export async function getSkills(): Promise<Skills> {
     groq`*[_type == "skills"][0]{
       _id,
       _createdAt,
+      category,
       title,
       "skillsList": skillsList[] {
         skillName,
@@ -206,6 +208,7 @@ export async function getInterests(): Promise<Interests> {
     groq`*[_type == "interests"][0]{
       _id,
       _createdAt,
+      category,
       title,
       brief,
     }

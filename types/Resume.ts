@@ -1,6 +1,7 @@
 export type Resume = {
   _id: string;
   _createdAt: string;
+  category: string;
   order: number;
   title: string;
   subTitle?: string;

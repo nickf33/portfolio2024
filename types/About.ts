@@ -6,6 +6,7 @@ export type ProjectImage = {
 export type About = {
   _id: string;
   _createdAt: string;
+  category: string;
   title: string;
   statement: string;
   mainImg: ProjectImage;

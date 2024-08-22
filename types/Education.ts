@@ -1,6 +1,7 @@
 export type Education = {
   _id: string;
   _createdAt: string;
+  category: string;
   title: string;
   subTitle: string;
   brief: string;
