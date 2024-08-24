@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { TransitionLink } from "../../ui/TransitionLink";
 import logo from "@/images/logo/nfio_logo.svg";
 import { useState, useEffect } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
@@ -17,12 +18,11 @@ const NavLink = ({ linkText, url }) => {
   return (
     <>
       <MagneticWrap>
-        <Link
-          href={`/${url}`}
-          className="link text-2xs font-medium hover:text-green-light"
-        >
-          <p>{linkText}</p>
-        </Link>
+        <TransitionLink href={`/${url}`}>
+          <p className="link text-2xs font-medium hover:text-green-light">
+            {linkText}
+          </p>
+        </TransitionLink>
       </MagneticWrap>
     </>
   );
@@ -68,8 +68,8 @@ export default function DesktopNav() {
           isScrolled ? "backdrop-blur-2xl" : ""
         }`}
       >
-        <div className="flex justify-between items-center w-4/5 mx-auto my-0 max-w-custom">
-          <Link href="/" className="link flex justify-center">
+        <div className="link flex justify-between items-center w-4/5 mx-auto my-0 max-w-custom">
+          <TransitionLink href="/">
             <Image
               src={logo}
               alt="logo"
@@ -78,7 +78,7 @@ export default function DesktopNav() {
               className="h-auto w-12 min-w-[70px]"
               priority
             />
-          </Link>
+          </TransitionLink>
           <div className="flex w-40 justify-between items-center">
             {links.map((link, index) => (
               <NavLink key={index} linkText={link.linkText} url={link.url} />

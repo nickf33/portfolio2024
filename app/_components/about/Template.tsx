@@ -1,39 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { IoIosArrowRoundForward } from "react-icons/io";
-import { motion } from "framer-motion";
-import { GoDot } from "react-icons/go";
-import { GoDotFill } from "react-icons/go";
+import { motion, AnimatePresence } from "framer-motion";
+import { GoDot, GoDotFill } from "react-icons/go";
+import { TemplateProps, ListItem } from "@/types/Template";
 
-interface ListItem {
-  _key: string;
-  item?: string;
-  itemTitle?: string;
-  itemDescription?: string;
-}
+const Template = ({ data, category }: TemplateProps) => {
+  const [isOpen, setIsOpen] = useState(true);
 
-interface TemplateProps {
-  data: {
-    brief: string;
-    endDate: string;
-    listTitle?: string;
-    listItems?: ListItem[];
-    modules?: ListItem[];
-    modulesListTitle?: string;
-    skills?: ListItem[];
-    skillsListTitle?: string;
-    order: number;
-    startDate: string;
-    subTitle: string;
-    title: string;
-  };
-  category: string;
-  id: string;
-  index: number;
-}
-
-const Template = ({ data, category, id, index }: TemplateProps) => {
   const {
     brief,
     endDate,
@@ -49,29 +23,74 @@ const Template = ({ data, category, id, index }: TemplateProps) => {
   } = data;
 
   return (
-    <>
-      <div id={id} className="relative border-b border-white-dark w-full mb-6">
-        <h2 className="text-lg">{title}</h2>
-        <h3 className="text-2xs font-semibold font-mont mt-1 mb-4">
-          {subTitle}
-        </h3>
-        <p className="text-2xs">{brief}</p>
-        <div className="pl-4">
-          {renderWorkList(listItems, listTitle)}
-          {renderModulesList(modules, modulesListTitle)}
-          {renderSkillsList(skills, skillsListTitle)}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ stiffness: 10, damping: 12 }}
+      className={`relative border-b border-white-dark w-full ${
+        category !== "education" ? "pt-6" : ""
+      }`}
+    >
+      <div className="flex justify-between items-center cursor-pointer">
+        <div>
+          <h2 className="text-lg">{title}</h2>
+          <h3 className="text-2xs font-semibold font-mont mt-1">{subTitle}</h3>
         </div>
-        <p className="font-bebas text-sm text-right my-6">
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden"
+          >
+            <p className="text-2xs mt-4">{brief}</p>
+            <div className="pl-4">
+              {renderWorkList(listItems, listTitle)}
+              {renderModulesList(modules, modulesListTitle)}
+              {renderSkillsList(skills, skillsListTitle)}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      <div
+        className="flex justify-between items-start my-6"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <AnimatedToggle isOpen={isOpen} />
+
+        <p className="font-bebas text-sm text-right">
           {startDate} - {endDate}
         </p>
       </div>
-    </>
+    </motion.div>
   );
 };
 
+const AnimatedToggle = ({ isOpen }: { isOpen: Boolean }) => (
+  <div className="link relative w-16 h-4 overflow-hidden text-xs transition">
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={isOpen ? "close" : "open"}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
+        className="absolute inset-0 flex items-center justify-start underline transition hover:text-green-light"
+      >
+        {isOpen ? "Close" : "Open"}
+      </motion.span>
+    </AnimatePresence>
+  </div>
+);
+
 const renderModulesList = (
-  items: ListItem[] | undefined,
-  title: string | undefined
+  items: ListItem[] | null | undefined,
+  title: string | null | undefined
 ) => {
   if (!items || !title) return null;
 
@@ -88,16 +107,17 @@ const renderModulesList = (
     </div>
   );
 };
+
 const renderSkillsList = (
-  items: ListItem[] | undefined,
-  title: string | undefined
+  items: ListItem[] | null | undefined,
+  title: string | null | undefined
 ) => {
   if (!items || !title) return null;
 
   return (
-    <div>
+    <div className="flex-col  gap-4">
       <ListTitle>{title}</ListTitle>
-      <ul className="grid grid-cols-2 tablet:grid-cols-1">
+      <ul className="grid grid-cols-2 mobile:grid-cols-1">
         {items.map((item) => (
           <li key={item._key} className="my-0.5">
             <ListWrap key={item._key}>{item.item}</ListWrap>
@@ -109,8 +129,8 @@ const renderSkillsList = (
 };
 
 const renderWorkList = (
-  items: ListItem[] | undefined,
-  title: string | undefined
+  items: ListItem[] | null | undefined,
+  title: string | null | undefined
 ) => {
   if (!items || !title) return null;
 

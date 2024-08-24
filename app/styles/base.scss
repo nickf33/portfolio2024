@@ -8,6 +8,7 @@
   --highlight-reverse: #ff2d92;
   --cursor-color: #ffffff;
   --max-width: 1024px;
+  --transition-bg: #0f172a;
   --thick-font: "Bebas Neue", sans-serif;
   --thin-font: "Montserrat", sans-serif;
 }
@@ -140,7 +141,26 @@ section {
   display: block;
 }
 
+body,
+a,
+button,
+[role="button"] {
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  body,
+  a,
+  button,
+  [role="button"] {
+    cursor: auto;
+  }
+}
+
 body {
+  transition-property: opacity, transform, filter, background;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
   line-height: 1;
   background-color: var(--dark-color);
   color: var(--light-color);
@@ -235,6 +255,14 @@ select:-webkit-autofill:focus {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+.page-transition {
+  opacity: 0;
+  background: var(--transition-bg);
+  transform: translateY(40px);
+  filter: blur(12px);
+}
+
 .overlay {
   width: 99vw;
   overflow-x: hidden;

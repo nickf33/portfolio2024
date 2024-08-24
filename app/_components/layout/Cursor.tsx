@@ -1,84 +1,95 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 
 export default function Cursor() {
   const pathname = usePathname();
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0,
-  });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [cursorVariant, setCursorVariant] = useState("default");
 
-  useEffect(() => {
-    const mouseMove = (e: MouseEvent) => {
-      const mouseX = e.clientX;
-      const mouseY = e.clientY;
-
-      setMousePosition({
-        x: mouseX,
-        y: mouseY,
-      });
-    };
-
-    window.addEventListener("mousemove", mouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
   }, []);
 
-  const cursorStyle = {
-    top: `${mousePosition.y}px`,
-    left: `${mousePosition.x}px`,
-  };
+  const handleLinkHover = useCallback(() => {
+    setCursorVariant("grow");
+  }, []);
 
-  const handleLinkHover = () => {
-    const cursor = document.querySelector(".cursor");
-    cursor?.classList.add("grow");
-  };
+  const handleLinkLeave = useCallback(() => {
+    setCursorVariant("default");
+  }, []);
 
-  const handleLinkLeave = () => {
-    const cursor = document.querySelector(".cursor");
-    cursor?.classList.remove("grow");
-  };
-
-  useEffect(() => {
-    const linkClasses = document.querySelectorAll(".link");
-
-    const linkElements = [...linkClasses];
-
+  const setupLinkListeners = useCallback(() => {
+    const linkElements = document.querySelectorAll(".link");
     linkElements.forEach((linkItem) => {
       linkItem.addEventListener("mouseenter", handleLinkHover);
       linkItem.addEventListener("mouseleave", handleLinkLeave);
     });
+  }, [handleLinkHover, handleLinkLeave]);
 
-    // Reset cursor state when the page changes
-    const resetCursorState = () => {
-      const cursor = document.querySelector(".cursor");
-      cursor?.classList.remove("grow");
-    };
+  const removeLinkListeners = useCallback(() => {
+    const linkElements = document.querySelectorAll(".link");
+    linkElements.forEach((linkItem) => {
+      linkItem.removeEventListener("mouseenter", handleLinkHover);
+      linkItem.removeEventListener("mouseleave", handleLinkLeave);
+    });
+  }, [handleLinkHover, handleLinkLeave]);
 
-    resetCursorState(); // Reset initially
-    window.addEventListener("beforeunload", resetCursorState);
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+    setupLinkListeners();
+
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "childList") {
+          removeLinkListeners();
+          setupLinkListeners();
+        }
+      });
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
-      linkElements.forEach((linkItem) => {
-        linkItem.removeEventListener("mouseenter", handleLinkHover);
-        linkItem.removeEventListener("mouseleave", handleLinkLeave);
-      });
-
-      // Remove the event listener on component unmount
-      window.removeEventListener("beforeunload", resetCursorState);
+      window.removeEventListener("mousemove", handleMouseMove);
+      removeLinkListeners();
+      observer.disconnect();
     };
-  }, [pathname]);
+  }, [handleMouseMove, setupLinkListeners, removeLinkListeners]);
+
+  useEffect(() => {
+    setCursorVariant("default");
+    removeLinkListeners();
+    setupLinkListeners();
+  }, [pathname, removeLinkListeners, setupLinkListeners]);
+
+  const variants = {
+    default: {
+      width: "10px",
+      height: "10px",
+      backgroundColor: "transparent",
+    },
+    grow: {
+      width: "2rem",
+      height: "2rem",
+      backgroundColor: "var(--cursor-color)",
+    },
+  };
 
   return (
-    <>
-      <motion.div className="cursor tablet:hidden" style={cursorStyle}>
-        <div className="cursor__fade"></div>
-      </motion.div>
-    </>
+    <motion.div
+      className={`cursor tablet:hidden`}
+      variants={variants}
+      animate={cursorVariant}
+      style={{
+        left: `${mousePosition.x}px`,
+        top: `${mousePosition.y}px`,
+      }}
+    >
+      <div className={`dot ${cursorVariant === "grow" ? "hide" : ""}`}></div>
+      <div className="cursor__fade"></div>
+    </motion.div>
   );
 }

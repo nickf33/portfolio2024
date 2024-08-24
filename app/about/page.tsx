@@ -14,9 +14,13 @@ export default async function About() {
   const educationData = await getEducation();
   const resumeData = await getResume();
 
-  const categories = [educationData.category];
-
-  console.log(categories);
+  const categories: string[] = [
+    "education",
+    "experience",
+    "competencies",
+    "skills",
+    "projects",
+  ];
 
   return (
     <AboutWrap

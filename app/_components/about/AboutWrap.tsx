@@ -1,15 +1,16 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import Button from "@/app/_components/ui/Button";
 import { IoMdDownload } from "react-icons/io";
-import Education from "./Education";
-import Experience from "./Experience";
-import Skills from "./Skills";
-import InterestsWrap from "./Competencies";
 import { motion, AnimatePresence } from "framer-motion";
 import { GoDotFill } from "react-icons/go";
 import { Resume } from "@/types/Resume";
+import Template from "./Template";
+import { TemplateProps } from "@/types/Template";
+import Skills from "./Skills";
+import Competencies from "./Competencies";
+import { useInView } from "react-intersection-observer";
 
 const downloadLink =
   "https://drive.google.com/file/d/1MS_0vqQFtNE0vXlmvEgbYmA6xx8wsZLx/view?usp=sharing";
@@ -22,7 +23,9 @@ const AboutWrap = ({
   educationData,
   resumeData,
 }) => {
-  resumeData.sort((a: Resume, b: Resume) => a.order - b.order);
+  const [activeSection, setActiveSection] = useState("");
+
+  const scrollOffSet = 100;
 
   return (
     <AnimatePresence mode="wait">
@@ -38,12 +41,32 @@ const AboutWrap = ({
           <Intro aboutData={aboutData} downloadLink={downloadLink} />
           <div className="mt-20 w-full grid grid-cols-3 tablet:grid-cols-1">
             <div className="w-full h-full col-span-1 pr-12 tablet:hidden">
-              <AboutNav />
+              <AboutNav
+                categories={categories}
+                activeSection={activeSection}
+                scrollOffSet={scrollOffSet}
+              />
             </div>
-            <div className="mt-10 w-full h-full col-span-2"></div>
+            <div className="mt-2 w-full h-full col-span-2">
+              <Section id={categories[0]} setActiveSection={setActiveSection}>
+                <Template data={educationData} category={categories[0]} />
+              </Section>
+              <Section id={categories[1]} setActiveSection={setActiveSection}>
+                <TemplateIterator resumeData={resumeData} />
+              </Section>
+              <Section id={categories[2]} setActiveSection={setActiveSection}>
+                <Competencies competenciesData={competenciesData} />
+              </Section>
+              <Section id={categories[3]} setActiveSection={setActiveSection}>
+                <Skills skillsData={skillsData} />
+              </Section>
+            </div>
           </div>
         </div>
-        <Lower />
+
+        <Section id={categories[4]} setActiveSection={setActiveSection}>
+          <Lower />
+        </Section>
       </motion.div>
     </AnimatePresence>
   );
@@ -89,30 +112,55 @@ const Intro = ({
   );
 };
 
-// Navigation for resume sections
+interface NavProps {
+  categories: string[];
+  activeSection: string;
+  scrollOffSet: number;
+}
 
-const AboutNav = () => {
-  const navItems = [
-    { text: "Education", link: "#education" },
-    { text: "Experience", link: "#experience" },
-    { text: "Key Skills", link: "#key-skills" },
-    { text: "Interests", link: "#interests" },
-    { text: "Projects", link: "#projects" },
-  ];
+const AboutNav = ({ categories, activeSection, scrollOffSet }: NavProps) => {
+  const handleClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    category: string
+  ) => {
+    e.preventDefault();
+    const element = document.getElementById(category);
+    if (element) {
+      const topOffset = element.offsetTop - scrollOffSet;
+      window.scrollTo({
+        top: topOffset,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
-    <>
-      <div className="w-full sticky top-10">
-        {navItems.map((item, index) => (
-          <div
-            key={index + item.text}
-            className="border-b border-white-dark py-3 flex"
-          >
-            <GoDotFill className="text-green-light mt-[2px] mr-2" />
-            <p className="text-sm font-bebas">{item.text}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="w-full sticky top-10">
+      {categories.map((category, index) => (
+        <motion.a
+          key={index + category}
+          href={`#${category}`}
+          className={`border-b border-white-dark py-3 flex items-center`}
+          onClick={(e) => handleClick(e, category)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <AnimatePresence>
+            {activeSection === category && (
+              <motion.div
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.2 }}
+                className="overflow-hidden"
+              >
+                <GoDotFill className="text-green-light mr-2" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <p className="text-sm font-bebas">{category}</p>
+        </motion.a>
+      ))}
+    </div>
   );
 };
 
@@ -122,8 +170,8 @@ const Lower = () => {
       <div className="w-4/5 mx-auto max-w-custom mt-20">
         <h1 className="tablet:text-2xl">What I have worked on</h1>
 
-        <Button link="work" label="work button" additionalClass="my-4">
-          My Work
+        <Button link="projects" label="projects button" additionalClass="my-4">
+          Projects
         </Button>
 
         <p className="text-2xs text-white-dark font-medium mt-8 max-w-[22rem] tablet:text-xs tablet:mt-16">
@@ -133,6 +181,50 @@ const Lower = () => {
           been working on.
         </p>
       </div>
+    </>
+  );
+};
+
+interface SectionProps {
+  id: string;
+  setActiveSection: (id: string) => void;
+  children: React.ReactNode;
+}
+
+const Section = ({ id, setActiveSection, children }: SectionProps) => {
+  const { ref, inView } = useInView({
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      setActiveSection(id);
+    }
+  }, [inView, id, setActiveSection]);
+
+  return (
+    <section id={id} ref={ref}>
+      {children}
+    </section>
+  );
+};
+
+interface TemplateIteratorProps {
+  resumeData: Resume[];
+}
+
+const TemplateIterator = ({ resumeData }: TemplateIteratorProps) => {
+  const sortedData = [...resumeData].sort((a, b) => a.order - b.order);
+
+  return (
+    <>
+      {sortedData.map((item) => (
+        <Template
+          key={item._id}
+          data={item as unknown as TemplateProps["data"]}
+          category={item.category}
+        />
+      ))}
     </>
   );
 };

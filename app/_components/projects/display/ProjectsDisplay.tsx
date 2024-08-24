@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { TransitionLink } from "../../ui/TransitionLink";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import FilterButton from "@/app/_components/projects/display/FilterButton";
@@ -120,18 +121,14 @@ export default function ProjectsDisplay({
       <AnimatePresence>
         <div className="ml-auto max-w-[900px]">
           {filteredProjectData.map((item: ProjectItemProps, idx: number) => (
-            <Link
-              href={`/projects/${item.slug}`}
-              key={item._id}
-              className="link group"
-            >
+            <TransitionLink href={`/projects/${item.slug}`} key={item._id}>
               <motion.div
                 key={item._id}
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: 50, opacity: 0 }}
                 transition={{ delay: idx / 10 }}
-                className="relative flex items-center justify-between pl-4 h-32 max-h-[180px] overflow-hidden tablet:flex-col-reverse tablet:max-h-none tablet:h-auto tablet:px-0 tablet:py-8"
+                className="link group relative flex items-center justify-between pl-4 h-32 max-h-[180px] overflow-hidden tablet:flex-col-reverse tablet:max-h-none tablet:h-auto tablet:px-0 tablet:py-8"
               >
                 <div className="relative m-0 tablet:w-full">
                   <div className="flex items-center">
@@ -161,7 +158,7 @@ export default function ProjectsDisplay({
                 </div>
               </motion.div>
               <hr />
-            </Link>
+            </TransitionLink>
           ))}
         </div>
       </AnimatePresence>

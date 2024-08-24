@@ -4,6 +4,7 @@ import "@/app/styles/index.scss";
 import NavigationWrap from "@/app/_components/layout/navs/NavigationWrap";
 import Footer from "@/app/_components/layout/Footer";
 import Cursor from "@/app/_components/layout/Cursor";
+import CustomCursor from "./_components/layout/CustomCursor";
 import Background from "./_components/layout/background";
 import { Suspense } from "react";
 import Loading from "./loading";
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Cursor />
         <Background />
         <NavigationWrap />
         <Suspense fallback={<Loading />}>
@@ -35,7 +37,6 @@ export default function RootLayout({
             <Footer />
           </main>
         </Suspense>
-        <Cursor />
       </body>
     </html>
   );

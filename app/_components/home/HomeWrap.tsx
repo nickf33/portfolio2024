@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Button from "@/app/_components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
+import SplitText from "../ui/SplitText";
 
 const ExternalLink = ({ text, link }: { text: string; link: string }) => {
   return (
@@ -44,28 +45,31 @@ export default function HomeWrap() {
           <div className="w-4/5 mx-auto max-w-custom">
             <h1 className="text-2xl">Hi, I am Nick</h1>
             <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
-            <p className="text-lg font-bebas text-white-dark font-medium my-8 max-w-[22rem]">
-              A recent{" "}
-              <ExternalLink text="Open University" link="https://open.ac.uk" />{" "}
-              graduate with first class honours in web technologies, design and
-              development. Take a look at some of my{" "}
-              <InternalLink text="projects" link="projects" /> or view my{" "}
-              <InternalLink text="C.V." link="about" />
+            <p className="relative text-lg font-bebas max-w-[24rem] text-white-dark font-medium  leading-tight my-8">
+              Specialising in web technologies, design and development with a
+              first-class degree from the Open University. Experienced in
+              creating efficient, user-friendly digital solutions.
             </p>
 
             <Button
               link="contact"
               label="Contact text"
               additionalClass="lgMobile:pt-10 lgMobile:pb-4"
+              delay={1.2}
             >
               Contact
             </Button>
-            <div className="mt-8 sm-mw">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.6 }}
+              className="mt-12 sm-mw"
+            >
               <p className="text-white-darker text-[12px] max-w-[12rem] tablet:text-xs">
                 Crafted in Figma, powered by Next.js and Sanity CMS. Built with
                 Typescript and Tailwind.
               </p>
-            </div>
+            </motion.div>
           </div>
         </motion.header>
       </AnimatePresence>
