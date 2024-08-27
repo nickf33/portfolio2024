@@ -37,7 +37,6 @@ export default function HomeWrap() {
           key="content"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
           transition={{ type: "tween", duration: 1 }}
           id="hero"
           className="relative flex items-center justify-center w-full min-h-screen"
@@ -45,11 +44,16 @@ export default function HomeWrap() {
           <div className="w-4/5 mx-auto max-w-custom">
             <h1 className="text-2xl">Hi, I am Nick</h1>
             <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
-            <p className="relative text-lg font-bebas max-w-[24rem] text-white-dark font-medium  leading-tight my-8">
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, stiffness: 10 }}
+              className="relative text-lg font-bebas max-w-[24rem] text-white-dark font-medium  leading-tight my-8"
+            >
               Specialising in web technologies, design and development with a
               first-class degree from the Open University. Experienced in
               creating efficient, user-friendly digital solutions.
-            </p>
+            </motion.p>
 
             <Button
               link="contact"
