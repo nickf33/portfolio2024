@@ -59,7 +59,7 @@ export default function HomeWrap() {
               link="contact"
               label="Contact text"
               additionalClass="lgMobile:pt-10 lgMobile:pb-4"
-              delay={1.2}
+              delay={0.8}
             >
               Contact
             </Button>
