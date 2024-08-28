@@ -11,7 +11,7 @@ const Skills = ({ skillsData }) => {
 
   return (
     <>
-      <div className="relative my-20 w-full ml-auto tablet:w-full">
+      <div className="relative py-20 w-full ml-auto tablet:w-full">
         <h2 className="text-right text-xl mb-4 mt-8">{title}</h2>
 
         <div className="flex justify-end flex-wrap w-full gap-4 max-w-[26rem] laptop:max-w-[20rem] ml-auto">

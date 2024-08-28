@@ -42,12 +42,24 @@ export default function HomeWrap() {
           className="relative flex items-center justify-center w-full min-h-screen"
         >
           <div className="w-4/5 mx-auto max-w-custom">
-            <h1 className="text-2xl">Hi, I am Nick</h1>
-            <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, stiffness: 10 }}
+              className="text-2xl"
+            >
+              Hi, I am Nick
+            </motion.h1>
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: 48 }}
+              transition={{ delay: 0.6, stiffness: 10 }}
+              className="h-[0.2rem] bg-gradient-green my-4"
+            />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, stiffness: 10 }}
+              transition={{ delay: 0.8, stiffness: 10 }}
               className="relative text-lg font-bebas max-w-[24rem] text-white-dark font-medium  leading-tight my-8"
             >
               Specialising in web technologies, design and development with a
@@ -59,7 +71,7 @@ export default function HomeWrap() {
               link="contact"
               label="Contact text"
               additionalClass="lgMobile:pt-10 lgMobile:pb-4"
-              delay={0.8}
+              delay={1}
             >
               Contact
             </Button>

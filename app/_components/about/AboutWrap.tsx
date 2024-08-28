@@ -93,18 +93,42 @@ const Intro = ({
 
   return (
     <>
-      <h1 className="text-2xl">{title}</h1>
-      <div className="w-8 h-[0.2rem] bg-gradient-green my-4" />
-
-      <p className="text-2xs text-white-dark font-medium my-8 max-w-[26rem] tablet:text-xs">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, stiffness: 10 }}
+        className="text-2xl"
+      >
+        {title}
+      </motion.h1>
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: 48 }}
+        transition={{ delay: 0.2, stiffness: 10 }}
+        className="h-[0.2rem] bg-gradient-green my-4"
+      />
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6, stiffness: 10 }}
+        className="text-2xs text-white-dark font-medium my-8 max-w-[26rem] tablet:text-xs"
+      >
         {statement}
-      </p>
+      </motion.p>
 
-      <h2 className="text-base tablet:text-2xl mt-12">Career Summary</h2>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, stiffness: 10 }}
+        className="text-base tablet:text-2xl mt-12"
+      >
+        Career Summary
+      </motion.h2>
       <Button
         link={downloadLink}
         additionalClass="my-4 tablet:pt-0 lgMobile:pt-0"
         label="Download Icon"
+        delay={0.8}
       >
         <IoMdDownload className="text-xl lgMobile:text-2xl" />
       </Button>
