@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/app/_components/ui/Button";
 import { AnimatePresence, motion } from "framer-motion";
@@ -30,13 +31,19 @@ const InternalLink = ({ text, link }: { text: string; link: string }) => {
 };
 
 export default function HomeWrap() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
   return (
     <>
       <AnimatePresence mode="wait">
         <motion.header
           key="content"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
           transition={{ type: "tween", duration: 1 }}
           id="hero"
           className="relative flex items-center justify-center w-full min-h-screen"
@@ -44,7 +51,7 @@ export default function HomeWrap() {
           <div className="w-4/5 mx-auto max-w-custom">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
               transition={{ delay: 0.6, stiffness: 10 }}
               className="text-2xl"
             >
@@ -52,13 +59,13 @@ export default function HomeWrap() {
             </motion.h1>
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: 48 }}
+              animate={{ width: isLoaded ? 48 : 0 }}
               transition={{ delay: 0.6, stiffness: 10 }}
               className="h-[0.2rem] bg-gradient-green my-4"
             />
             <motion.p
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
               transition={{ delay: 0.8, stiffness: 10 }}
               className="relative text-lg font-bebas max-w-[24rem] text-white-dark font-medium  leading-tight my-8"
             >
@@ -71,17 +78,17 @@ export default function HomeWrap() {
               link="contact"
               label="Contact text"
               additionalClass="lgMobile:pt-10 lgMobile:pb-4"
-              delay={1}
+              delay={1.2}
             >
               Contact
             </Button>
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={{ opacity: isLoaded ? 1 : 0 }}
               transition={{ delay: 1.2, duration: 0.6 }}
               className="mt-12 sm-mw"
             >
-              <p className="text-white-dark text-[12px] max-w-[12rem] tablet:text-xs">
+              <p className="text-white-darker text-[12px] max-w-[12rem] tablet:text-xs">
                 Crafted in Figma, powered by Next.js and Sanity CMS. Built with
                 Typescript and Tailwind.
               </p>
