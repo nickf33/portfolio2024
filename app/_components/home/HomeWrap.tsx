@@ -81,7 +81,7 @@ export default function HomeWrap() {
               transition={{ delay: 1.2, duration: 0.6 }}
               className="mt-12 sm-mw"
             >
-              <p className="text-white-darker text-[12px] max-w-[12rem] tablet:text-xs">
+              <p className="text-white-dark text-[12px] max-w-[12rem] tablet:text-xs">
                 Crafted in Figma, powered by Next.js and Sanity CMS. Built with
                 Typescript and Tailwind.
               </p>
