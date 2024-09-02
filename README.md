@@ -1,7 +1,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/nickf33/portfolio2024/blob/master/images/logo/logo.png" alt="Nick F Logo" width="20"/>
+  <img src="https://github.com/nickf33/portfolio2024/blob/master/images/logo/logo.png" alt="Nick F Logo" width="120"/>
 </p>
 # Portfolio
 ## Overview
