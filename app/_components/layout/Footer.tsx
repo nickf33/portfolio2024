@@ -1,5 +1,4 @@
 "use client";
-import { FaFacebookF } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import { usePathname } from "next/navigation";
