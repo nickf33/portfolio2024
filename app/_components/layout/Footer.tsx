@@ -6,21 +6,14 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import MagneticWrap from "../ui/MagneticWrap";
 
-const icons = [
-  <FaFacebookF key="0" />,
-  <FaLinkedinIn key="1" />,
-  <FiGithub key="2" />,
-];
+const icons = [<FaLinkedinIn key="0" />, <FiGithub key="1" />];
 
 const SocialLink = ({ link, idx }) => {
   return (
     <>
       <MagneticWrap>
         <Link target="_blank" href={link} rel="noopener noreferrer">
-          <div
-            className="ml-6 text-gradient-green inline-block text-xs hover:text-red-500 link"
-            aria-label="social media icon"
-          >
+          <div className="ml-6 text-gradient-green inline-block text-xs hover:text-red-500 link">
             {icons[idx]}
           </div>
         </Link>
@@ -43,9 +36,11 @@ const Footer = () => {
               Portfolio 2024
             </div>
             <div className="flex">
-              <SocialLink link="https://facebook.com" idx="0" />
-              <SocialLink link="https://linkedin.com" idx="1" />
-              <SocialLink link="https://github.com" idx="2" />
+              <SocialLink
+                link="https://www.linkedin.com/in/nick-feltham-6661362b6/"
+                idx="0"
+              />
+              <SocialLink link="https://github.com/nickf33" idx="1" />
             </div>
           </div>
         </footer>
