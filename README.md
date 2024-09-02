@@ -35,13 +35,6 @@ Welcome to the repository of my personal portfolio website. This site showcases 
 
 https://nickf.io
 
-## 🧑‍💻 Local Development
-
-1. Clone the repository
-2. Install dependencies
-3. Start the development server
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
 ## 📚 Learn More
 
 To learn more about the technologies used in this project, check out the following resources:
