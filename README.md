@@ -29,13 +29,11 @@ Welcome to the repository of my personal portfolio website. This site showcases 
 - Server-side rendering and optimized performance with Next.js
 - Type-safe development with TypeScript
 
-## 🏗 Project Structure
-
 ## 🌐 Live site
 
 https://nickf.io
 
-## 📚 Learn More
+## 📚 Docs
 
 To learn more about the technologies used in this project, check out the following resources:
 
