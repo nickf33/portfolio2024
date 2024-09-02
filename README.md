@@ -1,7 +1,7 @@
-# Nick Foreman's Portfolio
+# Portfolio
 
 <p align="center">
-  <img src="path_to_your_logo.png" alt="Nick Foreman Logo" width="200"/>
+  <img src="path_to_your_logo.png" alt="Nick F Logo" width="200"/>
 </p>
 
 ## Overview
