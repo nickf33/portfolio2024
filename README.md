@@ -1,7 +1,7 @@
 # Portfolio
 
 <p align="center">
-  <img src="path_to_your_logo.png" alt="Nick F Logo" width="200"/>
+  <img src="https://github.com/nickf33/portfolio2024/blob/master/images/logo/logo.png" alt="Nick F Logo" width="200"/>
 </p>
 
 ## Overview
