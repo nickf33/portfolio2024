@@ -1,9 +1,9 @@
 
 
-<p align="center">
   <img src="https://github.com/nickf33/portfolio2024/blob/master/images/logo/logo.png" alt="Nick F Logo" width="120"/>
-</p>
+
 # Portfolio
+
 ## Overview
 
 Welcome to the repository of my personal portfolio website. This site showcases my projects, skills, and professional journey in web development.
