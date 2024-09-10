@@ -13,7 +13,7 @@ import Competencies from "./Competencies";
 import { useInView } from "react-intersection-observer";
 
 const downloadLink =
-  "https://drive.google.com/file/d/1MS_0vqQFtNE0vXlmvEgbYmA6xx8wsZLx/view?usp=sharing";
+  "https://drive.google.com/file/d/1ymiOLYXuRIy1h5fU9Ry5Y814bIedFbYs/view?usp=sharing";
 
 const AboutWrap = ({
   categories,
