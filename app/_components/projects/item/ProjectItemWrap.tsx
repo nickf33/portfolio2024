@@ -124,7 +124,7 @@ const TechButtons = ({ tech }: { tech: string[] }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
     >
       {tech.map((item, index) => (
         <MagneticWrap key={item + index}>
@@ -215,7 +215,7 @@ const ChallengesList = ({
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.4 }}
+      viewport={{ once: true, amount: 0.2 }}
     >
       <motion.h2 className="text-xl font-bold mb-4" variants={itemVariants}>
         Challenges & Outcomes
@@ -224,7 +224,7 @@ const ChallengesList = ({
         initial={{ width: "0%" }}
         whileInView={{ width: "100%" }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ delay: 0.2, duration: 0.6 }}
+        transition={{ delay: 0.2, duration: 0.4 }}
         className="border-white-dark mb-10"
       />
       {challengeArray.map((challenge, index) => (
@@ -250,7 +250,7 @@ const ConclusionText = ({ conclusion }: { conclusion: string }) => {
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.6 }}
+        viewport={{ once: true, amount: 0.4 }}
         transition={{ stiffness: 10, damping: 12 }}
         className="my-12 max-w-[24rem]"
       >

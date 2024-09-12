@@ -54,7 +54,7 @@ export default function ProjectImgParallax({ parallaxImgs }) {
                 alt={imgOne.alt}
                 width={1000}
                 height={1000}
-                className="relative object-cover position-center w-full h-52"
+                className="relative object-cover position-top w-full h-52"
               />
             </motion.div>
           </div>
@@ -68,7 +68,7 @@ export default function ProjectImgParallax({ parallaxImgs }) {
                 alt={imgTwo.alt}
                 width={1000}
                 height={1000}
-                className="relative object-cover position-center w-full"
+                className="relative object-cover position-bottom w-full"
               />
             </motion.div>
           </div>
@@ -76,7 +76,7 @@ export default function ProjectImgParallax({ parallaxImgs }) {
       ) : (
         <>
           <div className="w-4/5 overflow-hidden">
-            <div className="h-auto object-cover object-center">
+            <div className="h-auto w-full object-cover object-top">
               <Image
                 src={imgOne.url}
                 alt={imgOne.alt}
@@ -87,7 +87,7 @@ export default function ProjectImgParallax({ parallaxImgs }) {
             </div>
           </div>
           <div className="relative top-[-4rem] w-4/5 ml-auto overflow-hidden">
-            <div className="h-auto object-cover object-center">
+            <div className="h-auto w-full object-cover object-bottom">
               <Image
                 src={imgTwo.url}
                 alt={imgTwo.alt}

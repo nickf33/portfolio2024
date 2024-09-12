@@ -36,7 +36,7 @@ export default function ProjectItemImg({ img }) {
           initial={{ y: 50, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.6, duration: 0.6 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
           ref={container}
           className="overflow-hidden h-80 w-full tablet:h-auto"
         >
