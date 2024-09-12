@@ -25,7 +25,7 @@ const AboutWrap = ({
 }) => {
   const [activeSection, setActiveSection] = useState("");
 
-  const scrollOffSet = 99;
+  const scrollOffSet = 100;
 
   return (
     <AnimatePresence mode="wait">
