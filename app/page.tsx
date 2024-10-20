@@ -13,7 +13,7 @@ const Preloader = () => (
     initial={{ opacity: 1 }}
     exit={{ opacity: 0 }}
     transition={{ duration: 0.5 }}
-    className="fixed inset-0 z-50 flex items-center justify-center bg-blue-dark text-white"
+    className="fixed inset-0 z-50 flex items-center justify-center bg-white-dark text-white"
   ></motion.div>
 );
 
